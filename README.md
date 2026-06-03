@@ -19,6 +19,7 @@
 | **Chapter 1** — Quality Improvement | 4–7، 19، 32 | [chapter1.html](docs/chapter1.html) | [chapter1.pdf](docs/chapter1.pdf) |
 | **Chapter 5** — Methods & Philosophy of SPC | 3–10، 21–25، 35–45 | [chapter5.html](docs/chapter5.html) | [chapter5.pdf](docs/chapter5.pdf) |
 | **Chapter 7** — Control Charts for Attributes (English) | 7–14، 27–29، 31–37، 40–47، 52–67 | [chapter7.html](docs/chapter7.html) | [chapter7.pdf](docs/chapter7.pdf) |
+| **Chapter 8** — Process & Measurement Capability (English) | 3–4، 10–12، 15–16، 19–25، 28–35 | [chapter8.html](docs/chapter8.html) | [chapter8.pdf](docs/chapter8.pdf) |
 
 ## 📁 بنية المستودع
 
@@ -53,5 +54,5 @@
 ---
 
 ### 📌 الحالة والفصول الأخرى
-- **Chapter 1 و 5:** بالعربية حالياً، وسيتم تحويلهما إلى الإنجليزية.
-- **Chapter 8 و 15:** الملفات موجودة في `source-files/` والشرائح محدّدة — جاهزة للتلخيص عند الطلب.
+- **Chapter 1, 5, 7, 8:** مكتملة بالإنجليزية بمصطلحات الكتاب.
+- **Chapter 15:** الملف موجود في `source-files/` والشرائح محدّدة (3–9، 12–13، 14–26، 28–29، 39–54) — جاهز للتلخيص عند الطلب.
