@@ -1,192 +1,177 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chapter 1 — ملخص ضبط الجودة الإحصائي</title>
-<meta name="description" content="ملخص Chapter 1: معنى الجودة وأبعادها الثمانية، الملاءمة للاستخدام، التعريف الحديث للجودة، الأساليب الإحصائية، ودورة PDCA. الشرائح 4–7، 19، 32.">
+<title>Chapter 1 — Quality Improvement (Summary)</title>
+<meta name="description" content="Summary of Chapter 1: meaning and dimensions of quality, fitness for use, modern definition, statistical methods, and the PDCA cycle. Slides 4–7, 19, 32.">
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body>
+<body dir="ltr">
 <div class="topbar">
-  <a class="brand" href="index.html">📚 الملخصات</a>
+  <a class="brand" href="index.html">📚 SQC Summaries</a>
   <span class="actions no-print">
-    <a class="btn" href="index.html">⌂ الرئيسية</a>
+    <a class="btn" href="index.html">⌂ Home</a>
     <a class="btn" href="chapter1.pdf">⬇️ PDF</a>
-    <button class="btn btn-solid" onclick="window.print()">🖨️ طباعة</button>
+    <button class="btn btn-solid" onclick="window.print()">🖨️ Print</button>
   </span>
 </div>
 
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">1405-433 · Statistical Quality Control · Chapter 1</p>
-    <h1>الفصل الأول: الجودة وتحسين الجودة</h1>
-    <p class="sub">Quality Improvement in the Modern Business Environment</p>
+    <h1>Quality Improvement in the Modern Business Environment</h1>
+    <p class="sub">The meaning of quality, its dimensions, and the methods used to improve it</p>
     <div class="chips">
-      <span class="chip">الشرائح المغطّاة: <b>4، 5، 6، 7، 19، 32</b></span>
-      <span class="chip">ملخّص + المفاهيم الأساسية</span>
+      <span class="chip">Slides covered: <b>4–7, 19, 32</b></span>
+      <span class="chip">Summary + key concepts</span>
     </div>
   </div>
 </header>
 
 <main class="wrap">
   <nav class="toc">
-    <h2>محتويات الملخّص</h2>
+    <h2>Contents</h2>
     <ol>
-      <li><a href="#s1">معنى الجودة وأبعادها الثمانية</a></li>
-      <li><a href="#s2">أبعاد إضافية لقطاع الخدمات</a></li>
-      <li><a href="#s3">الملاءمة للاستخدام (التعريف التقليدي)</a></li>
-      <li><a href="#s4">التعريف الحديث للجودة</a></li>
-      <li><a href="#s5">الأساليب الإحصائية الثلاثة</a></li>
-      <li><a href="#s6">دورة التحسين PDCA / PDSA</a></li>
-      <li><a href="#s7">مراجعة سريعة</a></li>
+      <li><a href="#s1">The Meaning of Quality — Eight Dimensions</a></li>
+      <li><a href="#s2">Additional Dimensions for Services</a></li>
+      <li><a href="#s3">Fitness for Use — Traditional Definition</a></li>
+      <li><a href="#s4">Modern Definition of Quality</a></li>
+      <li><a href="#s5">Statistical Methods</a></li>
+      <li><a href="#s6">The PDCA / PDSA Cycle</a></li>
+      <li><a href="#s7">Quick Review</a></li>
     </ol>
   </nav>
 
-  <!-- ============ Section 1 ============ -->
+  <!-- ===== 1 ===== -->
   <section id="s1">
-    <h2><span class="num">1</span> معنى الجودة وأبعادها <span class="slide-ref">شريحة ٤</span></h2>
-    <p>الجودة <span class="term">Quality</span> مفهوم متعدّد الأبعاد. يحدّد الكتاب <strong>ثمانية أبعاد للجودة</strong> <span class="term">The Eight Dimensions of Quality</span> تصف الجودة في معظم المواقف الصناعية وكثير من مواقف الأعمال:</p>
-
+    <h2><span class="num">1</span> The Meaning of Quality <span class="slide-ref">slide 4</span></h2>
+    <p>Quality is multi-dimensional. The text gives <strong>the Eight Dimensions of Quality</strong> that describe quality in most industrial and many business situations:</p>
     <div class="tablewrap">
       <table>
-        <thead>
-          <tr><th>#</th><th>البُعد</th><th>السؤال الذي يجيب عنه</th></tr>
-        </thead>
+        <thead><tr><th>#</th><th>Dimension</th><th>Question it answers</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td><span class="term">Performance</span> الأداء</td><td>هل يؤدّي المنتج الوظيفة المقصودة منه؟</td></tr>
-          <tr><td>2</td><td><span class="term">Reliability</span> الموثوقية</td><td>كم مرّة يتعطّل المنتج؟</td></tr>
-          <tr><td>3</td><td><span class="term">Durability</span> المتانة / العمر</td><td>كم يدوم المنتج؟</td></tr>
-          <tr><td>4</td><td><span class="term">Serviceability</span> قابلية الصيانة</td><td>ما مدى سهولة إصلاح المنتج؟</td></tr>
-          <tr><td>5</td><td><span class="term">Aesthetics</span> الشكل الجمالي</td><td>كيف يبدو المنتج؟</td></tr>
-          <tr><td>6</td><td><span class="term">Features</span> الخصائص / المزايا</td><td>ماذا يفعل المنتج؟</td></tr>
-          <tr><td>7</td><td><span class="term">Perceived Quality</span> الجودة المُدرَكة</td><td>ما سمعة الشركة أو منتجها؟</td></tr>
-          <tr><td>8</td><td><span class="term">Conformance to Standards</span> المطابقة للمعايير</td><td>هل صُنِع المنتج تماماً كما أراد المصمّم؟</td></tr>
+          <tr><td>1</td><td><strong>Performance</strong></td><td>Will the product do the intended job?</td></tr>
+          <tr><td>2</td><td><strong>Reliability</strong></td><td>How often does the product fail?</td></tr>
+          <tr><td>3</td><td><strong>Durability</strong></td><td>How long does the product last?</td></tr>
+          <tr><td>4</td><td><strong>Serviceability</strong></td><td>How easy is it to repair the product?</td></tr>
+          <tr><td>5</td><td><strong>Aesthetics</strong></td><td>What does the product look like?</td></tr>
+          <tr><td>6</td><td><strong>Features</strong></td><td>What does the product do?</td></tr>
+          <tr><td>7</td><td><strong>Perceived Quality</strong></td><td>What is the reputation of the company or its product?</td></tr>
+          <tr><td>8</td><td><strong>Conformance to Standards</strong></td><td>Is the product made exactly as the designer intended?</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="box tip">
-      <span class="tag">💡 للحفظ</span>
-      <p>تذكّر الأبعاد الثمانية كأسئلة: <b>يعمل؟ يتعطّل؟ يدوم؟ يُصلَح؟ شكله؟ مزاياه؟ سمعته؟ مطابق للمواصفات؟</b></p>
-    </div>
   </section>
 
-  <!-- ============ Section 2 ============ -->
+  <!-- ===== 2 ===== -->
   <section id="s2">
-    <h2><span class="num">2</span> أبعاد إضافية لقطاع الخدمات <span class="slide-ref">شريحة ٥</span></h2>
-    <p>في مؤسسات <strong>الخدمات والمعاملات</strong> (مثل البنوك والتمويل، والرعاية الصحية، وخدمة العملاء) تُضاف <strong>ثلاثة أبعاد</strong>:</p>
+    <h2><span class="num">2</span> Additional Dimensions for Service Organizations <span class="slide-ref">slide 5</span></h2>
+    <p>In service and transactional business organizations (banking and finance, health care, customer service), three more dimensions are added:</p>
     <ol>
-      <li><strong><span class="term">Responsiveness</span> سرعة الاستجابة</strong> — كم استغرق مقدّم الخدمة للردّ على طلبك؟</li>
-      <li><strong><span class="term">Professionalism</span> الاحترافية</strong> — معرفة ومهارات مقدّم الخدمة، وتتعلّق بكفاءة المؤسسة في تقديم الخدمات المطلوبة.</li>
-      <li><strong><span class="term">Attentiveness</span> حُسن الاهتمام</strong> — العملاء يريدون اهتماماً شخصياً يراعي احتياجاتهم.</li>
+      <li><strong>Responsiveness</strong> — How long did it take the service provider to reply to your request for service?</li>
+      <li><strong>Professionalism</strong> — The knowledge and skills of the service provider; the competency of the organization to provide the required services.</li>
+      <li><strong>Attentiveness</strong> — Customers want caring, personalized attention from their service providers.</li>
     </ol>
   </section>
 
-  <!-- ============ Section 3 ============ -->
+  <!-- ===== 3 ===== -->
   <section id="s3">
-    <h2><span class="num">3</span> الملاءمة للاستخدام — التعريف التقليدي <span class="slide-ref">شريحة ٦</span></h2>
-    <p>هناك <strong>جانبان عامّان للملاءمة للاستخدام</strong> <span class="term">Fitness for Use</span>:</p>
+    <h2><span class="num">3</span> Fitness for Use — the Traditional Definition <span class="slide-ref">slide 6</span></h2>
+    <p>There are two general aspects of <strong>fitness for use</strong>:</p>
     <div class="box def">
       <span class="tag">① Quality of Design</span>
-      <p><strong>جودة التصميم</strong> — الاختلافات المقصودة في مستوى الجودة بين المنتجات التي تؤدّي الوظيفة نفسها (مثل اختلاف فئات السيارات).</p>
+      <p>The intentional differences in grade or quality level between products that serve the same function.</p>
     </div>
     <div class="box def">
       <span class="tag">② Quality of Conformance</span>
-      <p><strong>جودة المطابقة</strong> — مدى مطابقة المنتج للمواصفات التي يتطلّبها التصميم <span class="en">(how well the product conforms to the specifications required by the design)</span>.</p>
+      <p>How well the product <strong>conforms to the specifications required by the design</strong>.</p>
     </div>
     <div class="box important">
-      <span class="tag">⚠️ مهم</span>
-      <p>هذا هو <strong>التعريف التقليدي</strong> للجودة (الجودة = الملاءمة للاستخدام).</p>
+      <span class="tag">⚠ Note</span>
+      <p>This (quality = fitness for use) is the <strong>traditional definition</strong> of quality.</p>
     </div>
   </section>
 
-  <!-- ============ Section 4 ============ -->
+  <!-- ===== 4 ===== -->
   <section id="s4">
-    <h2><span class="num">4</span> التعريف الحديث للجودة <span class="slide-ref">شريحة ٧</span></h2>
+    <h2><span class="num">4</span> The Modern Definition of Quality <span class="slide-ref">slide 7</span></h2>
     <div class="box important">
-      <span class="tag">⭐ التعريف الحديث (Definition)</span>
-      <p style="font-size:1.12rem"><strong>«الجودة تتناسب عكسياً مع التباين»</strong><br><span class="en">Quality is inversely proportional to variability.</span></p>
+      <span class="tag">⭐ Modern Definition</span>
+      <p style="font-size:1.12rem"><strong>“Quality is inversely proportional to variability.”</strong></p>
     </div>
     <div class="formula">
-      <span class="tag">العلاقة الأساسية</span>
+      <span class="tag">key relation</span>
       <span class="eq">Quality &nbsp;∝&nbsp; <span class="frac"><span>1</span><span>Variability</span></span></span>
     </div>
-    <p>أي: <strong>كلّما قلّ التباين <span class="term">Variability</span> في المنتج، زادت جودته</strong>. هذا التعريف هو الأساس الذي يقوم عليه ضبط الجودة الإحصائي، لأن تقليل التباين هدف مباشر يمكن قياسه والعمل عليه.</p>
-    <div class="box note">
-      <span class="tag">↪ ملاحظة ربط</span>
-      <p>بما أن تحسين الجودة = تقليل التباين، فإن أدوات الإحصاء (خرائط التحكّم، التجارب المصمّمة...) تصبح وسيلة مباشرة لتحسين الجودة — وهو موضوع بقية المقرر.</p>
-    </div>
+    <p>As <strong>variability</strong> in the important characteristics of a product <strong>decreases</strong>, the quality of the product <strong>increases</strong>. This is why reducing variability is the central goal of statistical quality control.</p>
   </section>
 
-  <!-- ============ Section 5 ============ -->
+  <!-- ===== 5 ===== -->
   <section id="s5">
-    <h2><span class="num">5</span> الأساليب الإحصائية الثلاثة <span class="slide-ref">شريحة ١٩</span></h2>
-    <p>تُستخدم ثلاثة أساليب إحصائية رئيسية في ضبط الجودة وتحسينها:</p>
+    <h2><span class="num">5</span> Statistical Methods <span class="slide-ref">slide 19</span></h2>
+    <p>Three statistical methods are useful for quality improvement:</p>
 
-    <h3>① ضبط العمليات الإحصائي — <span class="term">SPC (Statistical Process Control)</span></h3>
+    <h3>① Statistical Process Control (SPC)</h3>
     <ul>
-      <li>يعتمد على <strong>خرائط التحكّم <span class="term">Control charts</span></strong> بالإضافة إلى أدوات حلّ المشكلات الأخرى.</li>
-      <li>مفيد في <strong>مراقبة العمليات وتقليل التباين</strong> عبر إزالة الأسباب القابلة للعزو <span class="term">assignable causes</span>.</li>
-      <li>أسلوب <strong>متّصل/أثناء التشغيل <span class="term">On-line</span></strong> (إجراء داخل العملية).</li>
+      <li>Control charts, plus other problem-solving tools.</li>
+      <li>Useful in monitoring processes and reducing variability through <strong>elimination of assignable causes</strong>.</li>
+      <li>An <strong>on-line</strong> technique (in-process procedure).</li>
     </ul>
 
-    <h3>② التجارب المصمّمة — <span class="term">DOX (Designed Experiments)</span></h3>
+    <h3>② Designed Experiments (DOX)</h3>
     <ul>
-      <li>اكتشاف <strong>العوامل الرئيسية</strong> التي تؤثّر في أداء العملية.</li>
-      <li><strong>تحسين العملية <span class="term">Process optimization</span></strong>.</li>
-      <li>أسلوب <strong>غير متّصل <span class="term">Off-line</span></strong>.</li>
+      <li>Discovering the <strong>key factors</strong> that influence process performance.</li>
+      <li>Process optimization.</li>
+      <li>An <strong>off-line</strong> technique.</li>
     </ul>
 
-    <h3>③ معاينة القبول — <span class="term">Acceptance Sampling</span></h3>
-    <ul>
-      <li>الأسلوب الثالث، ويتعلّق بفحص عيّنة من المنتجات لاتخاذ قرار <strong>قبول أو رفض</strong> دفعة الإنتاج.</li>
-    </ul>
+    <h3>③ Acceptance Sampling</h3>
+    <p>Inspection and classification of a sample of units selected at random, related to acceptance or rejection of the product.</p>
 
     <div class="box tip">
-      <span class="tag">💡 تمييز سريع</span>
-      <p><strong>SPC = on-line</strong> (أثناء التشغيل/المراقبة) &nbsp;·&nbsp; <strong>DOX = off-line</strong> (تصميم وتحسين قبل/خارج التشغيل).</p>
+      <span class="tag">💡 Quick contrast</span>
+      <p><strong>SPC = on-line</strong> (monitoring during production) &nbsp;·&nbsp; <strong>DOX = off-line</strong> (design / optimization).</p>
     </div>
   </section>
 
-  <!-- ============ Section 6 ============ -->
+  <!-- ===== 6 ===== -->
   <section id="s6">
-    <h2><span class="num">6</span> دورة التحسين: PDCA / PDSA <span class="slide-ref">شريحة ٣٢</span></h2>
-    <p>أوصى <strong>ديمنغ <span class="term">Deming</span></strong> بدورة شيوارت <span class="term">Shewhart cycle</span> كنموذج لتوجيه التحسين. خطواتها الأربع <strong>Plan-Do-Check-Act</strong> تُسمّى دورة <span class="term">PDCA</span>. وأحياناً تُسمّى خطوة <span class="term">Check</span> بـ <span class="term">Study</span> فتصبح الدورة <span class="term">PDSA</span>.</p>
-
+    <h2><span class="num">6</span> The PDCA / PDSA Cycle <span class="slide-ref">slide 32</span></h2>
+    <p>Deming recommended the <strong>Shewhart cycle</strong> as a model to guide improvement. Its four steps — <strong>Plan-Do-Check-Act</strong> — are called the <strong>PDCA cycle</strong>. When the Check step is called <em>Study</em>, it becomes the <strong>PDSA cycle</strong>.</p>
     <div class="tablewrap">
       <table>
-        <thead><tr><th>الخطوة</th><th>المعنى</th></tr></thead>
+        <thead><tr><th>Step</th><th>Meaning</th></tr></thead>
         <tbody>
-          <tr><td><strong><span class="term">Plan</span> خطّط</strong></td><td>نقترح تغييراً في النظام يهدف إلى التحسين.</td></tr>
-          <tr><td><strong><span class="term">Do</span> نفّذ</strong></td><td>ننفّذ التغيير، عادةً على <strong>نطاق صغير أو تجريبي</strong> لمعرفة النتائج المتوقّعة.</td></tr>
-          <tr><td><strong><span class="term">Check (Study)</span> افحص/ادرس</strong></td><td>نحلّل نتائج التغيير لتحديد ما تعلّمناه عن التغييرات التي نُفِّذت.</td></tr>
-          <tr><td><strong><span class="term">Act</span> اعمل</strong></td><td>إمّا <strong>نتبنّى</strong> التغيير، أو <strong>نتخلّى</strong> عنه إن لم ينجح.</td></tr>
+          <tr><td><strong>Plan</strong></td><td>Propose a change in the system aimed at improvement.</td></tr>
+          <tr><td><strong>Do</strong></td><td>Carry out the change, usually on a <strong>small or pilot scale</strong>, to learn the results.</td></tr>
+          <tr><td><strong>Check (Study)</strong></td><td>Analyze the results to determine what has been learned about the changes.</td></tr>
+          <tr><td><strong>Act</strong></td><td>Adopt the change, or — if it was unsuccessful — abandon it.</td></tr>
         </tbody>
       </table>
     </div>
-
     <div class="box important">
-      <span class="tag">⚠️ نقطة مهمة</span>
-      <p>العملية <strong>تكرارية <span class="term">iterative</span></strong> دائماً تقريباً، وقد تتطلّب <strong>عدّة دورات</strong> لحلّ المشكلات المعقّدة.</p>
+      <span class="tag">⚠ Key point</span>
+      <p>The process is almost always <strong>iterative</strong>, and may require several cycles to solve complex problems.</p>
     </div>
   </section>
 
-  <!-- ============ Section 7 ============ -->
+  <!-- ===== 7 ===== -->
   <section id="s7">
-    <h2><span class="num">★</span> مراجعة سريعة</h2>
+    <h2><span class="num">★</span> Quick Review</h2>
     <ul>
-      <li><strong>٨ أبعاد للجودة</strong> + <strong>٣ أبعاد إضافية</strong> للخدمات (الاستجابة، الاحترافية، الاهتمام).</li>
-      <li><strong>الملاءمة للاستخدام</strong> = جودة تصميم + جودة مطابقة → <em>التعريف التقليدي</em>.</li>
-      <li><strong>التعريف الحديث:</strong> الجودة تتناسب <span style="color:var(--rose);font-weight:700">عكسياً</span> مع التباين.</li>
-      <li><strong>٣ أساليب إحصائية:</strong> SPC (on-line) · DOX (off-line) · Acceptance Sampling.</li>
-      <li><strong>دورة التحسين:</strong> PDCA / PDSA — وهي تكرارية.</li>
+      <li><strong>8 dimensions of quality</strong> + <strong>3 service dimensions</strong> (Responsiveness, Professionalism, Attentiveness).</li>
+      <li><strong>Fitness for use</strong> = Quality of design + Quality of conformance → <em>traditional definition</em>.</li>
+      <li><strong>Modern definition:</strong> quality is <span style="color:var(--rose);font-weight:700">inversely</span> proportional to variability.</li>
+      <li><strong>3 statistical methods:</strong> SPC (on-line) · DOX (off-line) · Acceptance sampling.</li>
+      <li><strong>Improvement cycle:</strong> PDCA / PDSA — iterative.</li>
     </ul>
   </section>
 </main>
 
 <footer class="wrap">
-  Chapter 1 — Statistical Quality Control, 7th Edition by Douglas C. Montgomery (© John Wiley &amp; Sons, Inc.) · ملخّص للشرائح المحددة 4–7، 19، 32.
+  Chapter 1 — Statistical Quality Control, 7th Edition by Douglas C. Montgomery (© John Wiley &amp; Sons, Inc.) · Summary of slides 4–7, 19, 32.
 </footer>
 </body>
 </html>
