@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 7 — Control Charts for Attributes (Summary)</title>
+<meta name="description" content="Summary of Chapter 7: Control Charts for Attributes — p chart, np chart, c chart, u chart, variable sample size, OC/ARL, demerit systems, with all formulas and worked examples.">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body dir="ltr">
+<div class="topbar">
+  <a class="brand" href="index.html">📚 SQC Summaries</a>
+  <span class="actions no-print">
+    <a class="btn" href="index.html">⌂ Home</a>
+    <a class="btn" href="chapter7.pdf">⬇️ PDF</a>
+    <button class="btn btn-solid" onclick="window.print()">🖨️ Print</button>
+  </span>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">1405-433 · Statistical Quality Control · Chapter 7</p>
+    <h1>Control Charts for Attributes</h1>
+    <p class="sub">The p, np, c and u charts — for fraction nonconforming &amp; nonconformities (defects)</p>
+    <div class="chips">
+      <span class="chip">Slides covered: <b>7–14, 27–29, 31–37, 40–47, 52–67</b></span>
+      <span class="chip">Summary + all formulas &amp; examples</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Attributes vs. Variables — the big picture</a></li>
+      <li><a href="#s2">The p Chart (Fraction Nonconforming)</a></li>
+      <li><a href="#s3">The np Chart (Number Nonconforming)</a></li>
+      <li><a href="#s4">Variable Sample Size (3 approaches)</a></li>
+      <li><a href="#s5">OC Function &amp; Average Run Length (ARL)</a></li>
+      <li><a href="#s6">The c Chart (Nonconformities / Defects)</a></li>
+      <li><a href="#s7">The u Chart (Nonconformities per Unit)</a></li>
+      <li><a href="#s8">Demerit Systems</a></li>
+      <li><a href="#s9">Choosing the Right Chart &amp; Improving the Process</a></li>
+      <li><a href="#s10">📋 Formula Cheat Sheet</a></li>
+      <li><a href="#s11">Quick Review</a></li>
+    </ol>
+  </nav>
+
+  <!-- ===== Section 1 ===== -->
+  <section id="s1">
+    <h2><span class="num">1</span> Attributes vs. Variables — the big picture</h2>
+    <p><strong>Attributes data</strong> classify each unit as conforming / nonconforming, or count defects. Two families of attribute charts:</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v">p, np</div><div class="l">Fraction / number <b>nonconforming</b><br>(Binomial)</div></div>
+      <div class="kpi"><div class="v">c, u</div><div class="l">Number of <b>nonconformities</b> (defects)<br>(Poisson)</div></div>
+    </div>
+    <div class="box note">
+      <span class="tag">Key distinction</span>
+      <p><strong>Nonconforming unit</strong> = a defective item (fails to meet specs). <strong>Nonconformity</strong> = a single defect; one unit may contain several nonconformities.</p>
+    </div>
+    <div class="box important">
+      <span class="tag">⚠ Recurring exam rule</span>
+      <p>For <em>all four</em> attribute charts: if the computed <strong>LCL &lt; 0, set LCL = 0</strong> (the chart then has only an upper control limit).</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 2 ===== -->
+  <section id="s2">
+    <h2><span class="num">2</span> The p Chart — Fraction Nonconforming <span class="slide-ref">slides 7–14</span></h2>
+    <p>The sample fraction nonconforming <span class="term">p̂</span> follows the <strong>binomial</strong> distribution. Its mean and standard deviation are:</p>
+    <div class="formula">
+      <span class="eq">μ<sub>p̂</sub> = p &nbsp;&nbsp;&nbsp; σ<sub>p̂</sub> = √<span class="sqrt"><span class="frac"><span>p(1 − p)</span><span>n</span></span></span></span>
+    </div>
+
+    <h3>Case A — Standard Given (p known) <span class="slide-ref">slide 8</span></h3>
+    <div class="formula">
+      <span class="tag">Eq 7.6</span>
+      <span class="eq">UCL = p + 3√<span class="sqrt"><span class="frac"><span>p(1 − p)</span><span>n</span></span></span><br>
+      CL = p<br>
+      LCL = p − 3√<span class="sqrt"><span class="frac"><span>p(1 − p)</span><span>n</span></span></span></span>
+    </div>
+
+    <h3>Case B — No Standard Given (estimate p) <span class="slide-ref">slides 9–10</span></h3>
+    <p>Take <span class="term">m</span> preliminary samples (rule of thumb <strong>m ≥ 20 or 25</strong>), each of size <span class="term">n</span>. With <span class="term">D<sub>i</sub></span> nonconforming units in sample i:</p>
+    <div class="formula small">
+      <span class="eq">p̂<sub>i</sub> = <span class="frac"><span>D<sub>i</sub></span><span>n</span></span> &nbsp;&nbsp;&nbsp;&nbsp; p̄ = <span class="frac"><span>Σ D<sub>i</sub></span><span>m·n</span></span> = <span class="frac"><span>Σ p̂<sub>i</sub></span><span>m</span></span></span>
+    </div>
+    <div class="formula">
+      <span class="tag">Eq 7.8</span>
+      <span class="eq">UCL = p̄ + 3√<span class="sqrt"><span class="frac"><span>p̄(1 − p̄)</span><span>n</span></span></span><br>
+      CL = p̄<br>
+      LCL = p̄ − 3√<span class="sqrt"><span class="frac"><span>p̄(1 − p̄)</span><span>n</span></span></span></span>
+    </div>
+
+    <div class="box example">
+      <span class="tag">📊 Example 7.1 — Orange juice cans</span>
+      <p>m = 30 samples, n = 50 each. Total nonconforming ΣD = 347 ⟹ <strong>p̄ = 347 / (30·50) = 0.2313</strong>.</p>
+      <p>Trial limits: UCL = 0.2313 + 3(0.0596) = <strong>0.4102</strong>, CL = 0.2313, LCL = <strong>0.0524</strong>.</p>
+      <p>Samples <strong>15</strong> (new raw material) and <strong>23</strong> (new, inexperienced operator) plotted above UCL → <strong>assignable causes</strong>. Removing them and recomputing on 28 samples (ΣD = 301):</p>
+      <p><strong>Revised:</strong> p̄ = 301/(28·50) = 0.2150 → UCL = <strong>0.3893</strong>, CL = 0.2150, LCL = <strong>0.0407</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 3 ===== -->
+  <section id="s3">
+    <h2><span class="num">3</span> The np Chart — Number Nonconforming <span class="slide-ref">slides 27–29</span></h2>
+    <p>Instead of the <em>fraction</em>, plot the <strong>number</strong> nonconforming. Many non-statistical staff find it easier to read. (If p is unknown, use p̄.)</p>
+    <div class="formula">
+      <span class="tag">Eq 7.13</span>
+      <span class="eq">UCL = np + 3√<span class="sqrt">np(1 − p)</span><br>
+      CL = np<br>
+      LCL = np − 3√<span class="sqrt">np(1 − p)</span></span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 Example 7.2 — same OJ data</span>
+      <p>p̄ = 0.2313, n = 50: &nbsp; CL = np̄ = 50(0.2313) = <strong>11.565</strong>, UCL = <strong>20.510</strong>, LCL = <strong>2.620</strong>. In practice plot whole numbers (e.g. use 2 and 21 as LCL/UCL).</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 4 ===== -->
+  <section id="s4">
+    <h2><span class="num">4</span> Variable Sample Size <span class="slide-ref">slides 31–33</span></h2>
+    <p>When sample size n changes from sample to sample, there are three approaches:</p>
+
+    <h3>I. Variable-Width Control Limits</h3>
+    <p>Compute limits separately for each sample using its own size <span class="term">n<sub>i</sub></span>:</p>
+    <div class="formula small">
+      <span class="eq">p̄ ± 3√<span class="sqrt"><span class="frac"><span>p̄(1 − p̄)</span><span>n<sub>i</sub></span></span></span></span>
+    </div>
+
+    <h3>II. Control Limits Based on an Average Sample Size</h3>
+    <p>Use one set of approximate limits from the average size (assumes future sizes won't differ greatly):</p>
+    <div class="formula small">
+      <span class="eq">n̄ = <span class="frac"><span>Σ n<sub>i</sub></span><span>m</span></span> &nbsp;→&nbsp; p̄ ± 3√<span class="sqrt"><span class="frac"><span>p̄(1 − p̄)</span><span>n̄</span></span></span></span>
+    </div>
+
+    <h3>III. Standardized Control Chart</h3>
+    <p>Plot points in standard-deviation units: center line = 0, UCL = +3, LCL = −3.</p>
+    <div class="formula">
+      <span class="eq">Z<sub>i</sub> = <span class="frac"><span>p̂<sub>i</sub> − p̄</span><span>√<span class="sqrt"><span class="frac"><span>p̄(1 − p̄)</span><span>n<sub>i</sub></span></span></span></span></span></span>
+    </div>
+  </section>
+
+  <!-- ===== Section 5 ===== -->
+  <section id="s5">
+    <h2><span class="num">5</span> OC Function &amp; Average Run Length <span class="slide-ref">slides 34–37</span></h2>
+    <p>The <strong>operating-characteristic (OC) curve</strong> plots the probability of a <strong>type II (β) error</strong> — incorrectly accepting "in control" — against the true fraction nonconforming. It measures the chart's <em>sensitivity</em> to a shift.</p>
+    <div class="formula">
+      <span class="tag">Eq 7.15 (β-error)</span>
+      <span class="eq">β = P[p̂ &lt; UCL | p] − P[p̂ ≤ LCL | p]<br>
+      = P[D &lt; n·UCL | p] − P[D ≤ n·LCL | p]</span>
+    </div>
+    <p>D is binomial(n, p), so β comes from the cumulative binomial. <strong>If LCL is negative, drop the second term.</strong></p>
+
+    <h3>Average Run Length (ARL) <span class="slide-ref">slide 36</span></h3>
+    <div class="formula">
+      <span class="eq">ARL = <span class="frac"><span>1</span><span>P(point plots out of control)</span></span></span>
+    </div>
+    <div class="formula small">
+      <span class="eq">In control: &nbsp; ARL<sub>0</sub> = <span class="frac"><span>1</span><span>α</span></span> &nbsp;&nbsp;·&nbsp;&nbsp; Out of control: &nbsp; ARL<sub>1</sub> = <span class="frac"><span>1</span><span>1 − β</span></span></span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 ARL example (slide 37)</span>
+      <p>n = 50, UCL = 0.3697, LCL = 0.0303, center p̄ = 0.20. From the OC curve α = 1 − 0.9973 = 0.0027, so <strong>ARL₀ = 1/0.0027 ≈ 370</strong> (a false alarm about every 370 samples).</p>
+      <p>If p shifts to 0.30, β = 0.8594, so <strong>ARL₁ = 1/(1 − 0.8594) ≈ 7</strong> — about 7 samples to detect the shift.</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 6 ===== -->
+  <section id="s6">
+    <h2><span class="num">6</span> The c Chart — Nonconformities (Defects) <span class="slide-ref">slides 40–47</span></h2>
+    <p>Charts the <strong>total number of defects</strong> in an inspection unit, modeled by the <strong>Poisson</strong> distribution. This requires: (1) a very large number of opportunities for defects, (2) a small, constant probability of a defect at any location, and (3) the <strong>same inspection unit</strong> every sample.</p>
+    <div class="formula small">
+      <span class="eq">p(x) = <span class="frac"><span>e<sup>−c</sup> c<sup>x</sup></span><span>x!</span></span>, &nbsp; x = 0,1,2,… &nbsp;&nbsp; (mean = variance = c)</span>
+    </div>
+
+    <h3>Case A — Standard Given (c known)</h3>
+    <div class="formula">
+      <span class="tag">Eq 7.16</span>
+      <span class="eq">UCL = c + 3√<span class="sqrt">c</span> &nbsp;·&nbsp; CL = c &nbsp;·&nbsp; LCL = c − 3√<span class="sqrt">c</span></span>
+    </div>
+
+    <h3>Case B — No Standard Given (estimate c̄)</h3>
+    <div class="formula">
+      <span class="tag">Eq 7.17</span>
+      <span class="eq">UCL = c̄ + 3√<span class="sqrt">c̄</span> &nbsp;·&nbsp; CL = c̄ &nbsp;·&nbsp; LCL = c̄ − 3√<span class="sqrt">c̄</span></span>
+    </div>
+
+    <div class="box example">
+      <span class="tag">📊 Example 7.3 — Printed circuit boards</span>
+      <p>26 samples, inspection unit = 100 boards. Total defects = 516 ⟹ <strong>c̄ = 516/26 = 19.85</strong>.</p>
+      <p>Trial: UCL = 19.85 + 3√19.85 = <strong>33.22</strong>, CL = 19.85, LCL = <strong>6.48</strong>.</p>
+      <p>Samples <strong>6</strong> (new inspector) and <strong>20</strong> (temperature-control problem) were out of control → removed. <strong>Revised:</strong> c̄ = 472/24 = 19.67 → UCL = <strong>32.97</strong>, LCL = <strong>6.36</strong>.</p>
+    </div>
+    <div class="box tip">
+      <span class="tag">💡 Further analysis</span>
+      <p>Defect data are richer than fraction nonconforming: classify defects <em>by type</em> and use a <strong>Pareto chart</strong> to find the "vital few" (e.g. solder insufficiency &amp; cold joints) feeding the <strong>out-of-control-action plans (OCAPs)</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 7 ===== -->
+  <section id="s7">
+    <h2><span class="num">7</span> The u Chart — Nonconformities per Unit <span class="slide-ref">slides 52–56</span></h2>
+    <p>When the sample contains <strong>n inspection units</strong>, chart the <strong>average defects per unit</strong> <span class="term">u = x / n</span> (x is Poisson). The u chart should <strong>always be used when the sample size is variable</strong>.</p>
+    <div class="formula">
+      <span class="tag">Eq 7.19</span>
+      <span class="eq">UCL = ū + 3√<span class="sqrt"><span class="frac"><span>ū</span><span>n</span></span></span> &nbsp;·&nbsp; CL = ū &nbsp;·&nbsp; LCL = ū − 3√<span class="sqrt"><span class="frac"><span>ū</span><span>n</span></span></span></span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 Example 7.4 — Supply-chain shipping errors</span>
+      <p>20 weeks, n = 50 shipments/week. Σ defects = 74 ⟹ <strong>ū = Σu<sub>i</sub>/20 = 1.48/20 = 0.0740</strong>.</p>
+      <p>UCL = 0.0740 + 3√(0.0740/50) = <strong>0.1894</strong>, CL = 0.0740, LCL = 0.0740 − … = −0.0414 → <strong>set LCL = 0</strong>.</p>
+    </div>
+    <h3>Variable sample size on a u chart</h3>
+    <p>Two options: (1) limits from average size n̄ = Σn<sub>i</sub>/m; or (2) the <strong>standardized chart</strong> (preferred), with CL = 0, UCL = +3, LCL = −3:</p>
+    <div class="formula">
+      <span class="eq">Z<sub>i</sub> = <span class="frac"><span>u<sub>i</sub> − ū</span><span>√<span class="sqrt"><span class="frac"><span>ū</span><span>n<sub>i</sub></span></span></span></span></span></span>
+    </div>
+  </section>
+
+  <!-- ===== Section 8 ===== -->
+  <section id="s8">
+    <h2><span class="num">8</span> Demerit Systems <span class="slide-ref">slides 57–58</span></h2>
+    <p>For complex products, not all defects are equally important, so classify them by <strong>severity</strong> and assign <strong>weights</strong>:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Class</th><th>Severity</th><th>Weight</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A</strong></td><td>Very serious (unfit / unsafe)</td><td class="en">100</td></tr>
+          <tr><td><strong>B</strong></td><td>Serious</td><td class="en">50</td></tr>
+          <tr><td><strong>C</strong></td><td>Moderately serious</td><td class="en">10</td></tr>
+          <tr><td><strong>D</strong></td><td>Minor</td><td class="en">1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Demerits in inspection unit i, and demerits per unit for a sample of n units (D = Σd<sub>i</sub>):</p>
+    <div class="formula small">
+      <span class="tag">Eq 7.21–7.22</span>
+      <span class="eq">d<sub>i</sub> = 100c<sub>iA</sub> + 50c<sub>iB</sub> + 10c<sub>iC</sub> + c<sub>iD</sub> &nbsp;&nbsp;·&nbsp;&nbsp; u<sub>i</sub> = <span class="frac"><span>D</span><span>n</span></span></span>
+    </div>
+    <div class="formula">
+      <span class="tag">Eq 7.23–7.25</span>
+      <span class="eq">CL = û = 100ū<sub>A</sub> + 50ū<sub>B</sub> + 10ū<sub>C</sub> + ū<sub>D</sub><br>
+      UCL / LCL = û ± 3σ̂<sub>u</sub><br>
+      σ̂<sub>u</sub> = √<span class="sqrt"><span class="frac"><span>(100²ū<sub>A</sub> + 50²ū<sub>B</sub> + 10²ū<sub>C</sub> + 1²ū<sub>D</sub>)</span><span>n</span></span></span></span>
+    </div>
+  </section>
+
+  <!-- ===== Section 9 ===== -->
+  <section id="s9">
+    <h2><span class="num">9</span> Choosing the Right Chart &amp; Improving the Process <span class="slide-ref">slides 59–66</span></h2>
+
+    <h3>Attributes vs. Variables charts <span class="slide-ref">slide 59</span></h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Attributes (p, np, c, u)</th><th>Variables (x̄–R, x̄–s)</th></tr></thead>
+        <tbody>
+          <tr><td>Several characteristics judged jointly (conform / not)</td><td>More information about process performance</td></tr>
+          <tr><td>Often easier &amp; cheaper to collect</td><td>Gives advance warning before defects occur</td></tr>
+          <tr><td>Usually needs <strong>larger</strong> samples</td><td>Needs <strong>smaller</strong> samples</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Which chart type? <span class="slide-ref">slides 62–64</span></h3>
+    <ul>
+      <li><strong>x̄ and R (or x̄ and s):</strong> new process; tight/overlapping tolerances; diagnosing a chronically troubled process; when destructive testing or reduced sampling is wanted.</li>
+      <li><strong>Attributes (p, c, u):</strong> operators control assignable causes; complex assembly; process control needed but measurement data unavailable; management summaries.</li>
+      <li><strong>Individuals (x) + moving range:</strong> one measurement per unit (e.g. chemical processes), or data available very slowly.</li>
+    </ul>
+
+    <h3>Actions taken to improve a process <span class="slide-ref">slide 65</span></h3>
+    <p>Decisions depend on two questions — <em>is the process in control?</em> and <em>is it capable?</em></p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th>Capable</th><th>Not capable</th></tr></thead>
+        <tbody>
+          <tr><td><strong>In control</strong></td><td>SPC</td><td>SPC · Experimental design · Investigate specs · Change process</td></tr>
+          <tr><td><strong>Not in control</strong></td><td>SPC</td><td>SPC · Experimental design · Investigate specs · Change process</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box tip">
+      <span class="tag">💡 Placement guideline</span>
+      <p>The <strong>earlier in the process that control can be established, the better.</strong> As knowledge grows, charts often shift toward attributes near the <em>end</em> of manufacturing, while x̄–R charts move <em>earlier</em> to the critical parameters.</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 10: Cheat sheet ===== -->
+  <section id="s10">
+    <h2><span class="num">📋</span> Formula Cheat Sheet</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Chart</th><th>Center line</th><th>Control limits (3σ)</th><th>Distribution</th></tr></thead>
+        <tbody>
+          <tr><td><strong>p</strong> (standard)</td><td class="en">p</td><td class="en">p ± 3√[p(1−p)/n]</td><td>Binomial</td></tr>
+          <tr><td><strong>p</strong> (no standard)</td><td class="en">p̄</td><td class="en">p̄ ± 3√[p̄(1−p̄)/n]</td><td>Binomial</td></tr>
+          <tr><td><strong>np</strong></td><td class="en">np</td><td class="en">np ± 3√[np(1−p)]</td><td>Binomial</td></tr>
+          <tr><td><strong>c</strong></td><td class="en">c̄ (or c)</td><td class="en">c̄ ± 3√c̄</td><td>Poisson</td></tr>
+          <tr><td><strong>u</strong></td><td class="en">ū</td><td class="en">ū ± 3√(ū/n)</td><td>Poisson</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Quantity</th><th>Formula</th></tr></thead>
+        <tbody>
+          <tr><td>Sample fraction (sample i)</td><td class="en">p̂ᵢ = Dᵢ / n</td></tr>
+          <tr><td>Average fraction</td><td class="en">p̄ = ΣDᵢ /(m·n) = Σp̂ᵢ / m</td></tr>
+          <tr><td>Average sample size</td><td class="en">n̄ = Σnᵢ / m</td></tr>
+          <tr><td>Standardized p (variable n)</td><td class="en">Zᵢ = (p̂ᵢ − p̄) / √[p̄(1−p̄)/nᵢ]</td></tr>
+          <tr><td>Standardized u (variable n)</td><td class="en">Zᵢ = (uᵢ − ū) / √(ū/nᵢ)</td></tr>
+          <tr><td>β error</td><td class="en">β = P[D &lt; n·UCL | p] − P[D ≤ n·LCL | p]</td></tr>
+          <tr><td>ARL (in / out of control)</td><td class="en">ARL₀ = 1/α &nbsp;·&nbsp; ARL₁ = 1/(1−β)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box important">
+      <span class="tag">⚠ Remember</span>
+      <p>If any LCL comes out negative, <strong>set LCL = 0</strong>. Use <strong>m ≥ 20–25</strong> preliminary samples to estimate parameters (phase I / trial limits).</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 11 ===== -->
+  <section id="s11">
+    <h2><span class="num">★</span> Quick Review</h2>
+    <ul>
+      <li><strong>Nonconforming (defective) → Binomial → p &amp; np charts.</strong></li>
+      <li><strong>Nonconformities (defects) → Poisson → c &amp; u charts.</strong></li>
+      <li><strong>p</strong> = fraction, <strong>np</strong> = number, <strong>c</strong> = defects per (constant) inspection unit, <strong>u</strong> = defects per unit (and for <em>variable</em> sample size).</li>
+      <li><strong>Variable n:</strong> variable-width limits · average-size limits · standardized chart (CL 0, ±3).</li>
+      <li><strong>OC curve</strong> shows β; <strong>ARL₀ = 1/α</strong>, <strong>ARL₁ = 1/(1−β)</strong>; larger n ⟹ faster detection.</li>
+      <li><strong>Demerit weights:</strong> A = 100, B = 50, C = 10, D = 1.</li>
+      <li>Always <strong>set LCL = 0 if negative</strong>; estimate parameters from <strong>≥ 20–25</strong> samples.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  Chapter 7 — Statistical Quality Control, 7th Edition by Douglas C. Montgomery (© John Wiley &amp; Sons, Inc.) · Summary of slides 7–14, 27–29, 31–37, 40–47, 52–67.
+</footer>
+</body>
+</html>

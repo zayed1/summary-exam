@@ -21,8 +21,12 @@ body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:'Tajawal','Segoe UI',Tahoma,Arial,sans-serif;
   font-size:17px; line-height:1.85; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 .wrap{max-width:920px; margin:0 auto; padding:0 18px}
+
+/* English (LTR) documents use a clean Latin font stack */
+body[dir="ltr"]{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif}
 
 /* ---------- Top bar ---------- */
 .topbar{
@@ -164,7 +168,6 @@ td .term,th .term{font-size:.86em}
   display:inline-block; background:#eef2f6; color:var(--muted);
   border:1px solid var(--line); border-radius:999px; padding:1px 9px;
   font-size:.74rem; font-weight:700; margin-inline-start:8px; vertical-align:middle;
-  direction:rtl;
 }
 
 /* key-points grid */
@@ -181,14 +184,16 @@ footer a{color:var(--primary)}
 .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin:8px 0 26px}
 .card{
   background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-  padding:22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;
-  transition:.18s; text-decoration:none; color:var(--ink);
+  padding:22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:12px;
+  transition:.18s;
 }
 .card:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(15,35,59,.14); border-color:var(--primary)}
+.card-main{display:flex; flex-direction:column; gap:10px; text-decoration:none; color:var(--ink); flex:1}
 .card .ico{width:52px; height:52px; border-radius:14px; background:var(--primary-soft);
   color:var(--primary-d); display:grid; place-items:center; font-size:1.5rem; font-weight:800}
-.card h3{margin:0; color:var(--primary-d); font-size:1.25rem}
+.card h3{margin:0; color:var(--primary-d); font-size:1.2rem; overflow-wrap:break-word}
 .card .meta{color:var(--muted); font-size:.9rem; margin:0}
+.card .meta.accent{color:var(--primary-d); font-weight:700}
 .card .go{margin-top:auto; color:var(--primary); font-weight:700; font-size:.92rem}
 .dl-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
 .dl{font-size:.8rem; padding:4px 11px; border-radius:999px; border:1px solid var(--line);

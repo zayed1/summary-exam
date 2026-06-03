@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 8 — Process &amp; Measurement System Capability (Summary)</title>
+<meta name="description" content="Summary of Chapter 8: process capability analysis, Cp / Cpk ratios, capability via control charts, and measurement systems (gauge) capability — P/T ratio, variance components, SNR, DR, gauge R&R. Slides 3–4, 10–12, 15–16, 19–25, 28–35.">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body dir="ltr">
+<div class="topbar">
+  <a class="brand" href="index.html">📚 SQC Summaries</a>
+  <span class="actions no-print">
+    <a class="btn" href="index.html">⌂ Home</a>
+    <a class="btn" href="chapter8.pdf">⬇️ PDF</a>
+    <button class="btn btn-solid" onclick="window.print()">🖨️ Print</button>
+  </span>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">1405-433 · Statistical Quality Control · Chapter 8</p>
+    <h1>Process and Measurement System Capability Analysis</h1>
+    <p class="sub">Cp &amp; Cpk capability ratios · capability from control charts · gauge (measurement system) capability</p>
+    <div class="chips">
+      <span class="chip">Slides covered: <b>3–4, 10–12, 15–16, 19–25, 28–35</b></span>
+      <span class="chip">Summary + all formulas &amp; examples</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Process Capability &amp; Natural Tolerance Limits</a></li>
+      <li><a href="#s2">Process Capability Ratio (Cp)</a></li>
+      <li><a href="#s3">Cpk — Actual Capability &amp; Centering</a></li>
+      <li><a href="#s4">Capability Analysis Using a Control Chart</a></li>
+      <li><a href="#s5">Gauge &amp; Measurement Systems Capability</a></li>
+      <li><a href="#s6">The Precision-to-Tolerance (P/T) Ratio</a></li>
+      <li><a href="#s7">Variance Components, SNR &amp; Discrimination Ratio</a></li>
+      <li><a href="#s8">Accuracy, Precision &amp; Gauge R&amp;R</a></li>
+      <li><a href="#s9">📋 Formula Cheat Sheet</a></li>
+      <li><a href="#s10">Quick Review</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="s1">
+    <h2><span class="num">1</span> Process Capability &amp; Natural Tolerance Limits <span class="slide-ref">slides 3–4</span></h2>
+    <p><strong>Process capability analysis</strong> quantifies process variability and analyzes it relative to product specifications. <strong>Process capability</strong> refers to the <strong>uniformity</strong> of the process. Variability is viewed two ways:</p>
+    <ol>
+      <li>The natural / inherent variability at a specified time — <strong>“instantaneous” variability</strong>.</li>
+      <li>The variability <strong>over time</strong>.</li>
+    </ol>
+    <p>It is customary to take the <strong>Six-Sigma spread</strong> of the quality-characteristic distribution as the measure of process capability. For a normal distribution with mean μ and standard deviation σ, the <strong>natural tolerance limits</strong> are:</p>
+    <div class="formula">
+      <span class="eq">UNTL = μ + 3σ &nbsp;·&nbsp; LNTL = μ − 3σ</span>
+    </div>
+    <div class="box note">
+      <span class="tag">Key facts</span>
+      <p>The natural tolerance limits contain <strong>99.73%</strong> of the output; only <strong>0.27%</strong> falls outside — which is <strong>2,700 nonconforming parts per million (ppm)</strong>. If the output is <strong>non-normal</strong>, the percentage outside μ ± 3σ may differ considerably from 0.27%.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <h2><span class="num">2</span> Process Capability Ratio (Cp) <span class="slide-ref">slides 10–12</span></h2>
+    <p>σ is almost always unknown and is replaced by an estimate σ̂ (from <span class="en">s</span> or <span class="en">R̄/d₂</span>). The <strong>process capability ratio (PCR)</strong> for two-sided specifications:</p>
+    <div class="formula">
+      <span class="tag">Cp</span>
+      <span class="eq">Ĉp = <span class="frac"><span>USL − LSL</span><span>6 σ̂</span></span></span>
+    </div>
+    <p>The PCR has a practical interpretation — the <strong>percentage of the specification band used up</strong> by the process:</p>
+    <div class="formula small">
+      <span class="eq">P = <span class="frac"><span>1</span><span>Ĉp</span></span> × 100</span>
+    </div>
+
+    <h3>One-Sided PCRs <span class="slide-ref">slide 11</span></h3>
+    <div class="formula">
+      <span class="eq">C<sub>pu</sub> = <span class="frac"><span>USL − μ</span><span>3σ</span></span> &nbsp;(upper only) &nbsp;·&nbsp; C<sub>pl</sub> = <span class="frac"><span>μ − LSL</span><span>3σ</span></span> &nbsp;(lower only)</span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 Example — bursting strength (LSL = 200)</span>
+      <p>x̄ = 264, s = 32: &nbsp; C<sub>pl</sub> = (264 − 200) / (3 × 32) = <strong>0.67</strong>.</p>
+      <p>Fallout: area left of Z = (200 − 264)/32 = −2 → about <strong>2.28% defective ≈ 22,800 ppm</strong>.</p>
+    </div>
+    <div class="box note">
+      <span class="tag">Interpretation (Table 8.2)</span>
+      <p>For a normal, stable process: <strong>Cp = 1 → 2,700 ppm</strong> (two-sided); <strong>Cp = 1.5 → 4 ppm</strong> (one-sided). Higher Cp ⟹ fewer nonconforming parts.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <h2><span class="num">3</span> Cpk — Actual Capability &amp; Centering <span class="slide-ref">slides 15–16</span></h2>
+    <div class="box important">
+      <span class="tag">⚠ Why Cpk?</span>
+      <p><strong>Cp does not take process centering into account</strong> — it measures <strong>potential</strong> capability, not actual. Cpk takes centering into account and measures <strong>actual</strong> capability:</p>
+    </div>
+    <div class="formula">
+      <span class="tag">Cpk</span>
+      <span class="eq">C<sub>pk</sub> = min( C<sub>pu</sub> , C<sub>pl</sub> )</span>
+    </div>
+    <ul>
+      <li>If <strong>C<sub>pk</sub> = C<sub>p</sub></strong> → the process is <strong>centered</strong> at the midpoint of the specifications.</li>
+      <li>If <strong>C<sub>pk</sub> &lt; C<sub>p</sub></strong> → the process is <strong>off center</strong>.</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <h2><span class="num">4</span> Capability Analysis Using a Control Chart <span class="slide-ref">slides 19–21</span></h2>
+    <p>Histograms, probability plots and PCRs summarize performance but don’t address <strong>statistical control</strong>. The <strong>control chart should be regarded as the primary technique of process capability analysis</strong> (both attributes and variables charts can be used).</p>
+    <div class="box example">
+      <span class="tag">📊 Example — bottle strength (Table 8.5, 20 samples of 5)</span>
+      <p><strong>x̄ chart:</strong> CL = x̄ = 264.06; UCL = x̄ + A₂R̄ = 264.06 + (0.577)(77.3) = <strong>308.66</strong>; LCL = <strong>219.46</strong>.</p>
+      <p><strong>R chart:</strong> CL = R̄ = 77.3; UCL = D₄R̄ = (2.115)(77.3) = <strong>163.49</strong>; LCL = D₃R̄ = 0.</p>
+      <p>Estimate σ from the range: σ̂ = R̄/d₂ = 77.3 / 2.326 = <strong>33.23</strong>. With LSL = 200: C<sub>pl</sub> = (264.06 − 200)/(3 × 33.23) ≈ <strong>0.64</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <h2><span class="num">5</span> Gauge &amp; Measurement Systems Capability <span class="slide-ref">slides 22–25</span></h2>
+    <p>Observed variability comes partly from the units measured and partly from the <strong>measurement system</strong> (instrument/gauge, operator, conditions, calibration). Purpose of a measurement-systems capability study:</p>
+    <ol>
+      <li>Determine how much of the observed variability is due to the gauge.</li>
+      <li>Isolate the components of variability in the measurement system.</li>
+      <li>Assess whether the gauge is <strong>capable</strong> (suitable for its intended use).</li>
+    </ol>
+    <div class="box def">
+      <span class="tag">The two R’s of measurement capability</span>
+      <p><strong>Repeatability</strong> — same value when the same unit is measured several times under <em>identical</em> conditions. &nbsp; <strong>Reproducibility</strong> — variation when measured under <em>different</em> conditions (operators, time…). Other aspects: <strong>linearity, stability, bias</strong>.</p>
+    </div>
+    <p>Basic MSA model — total observed measurement = true value + measurement error:</p>
+    <div class="formula">
+      <span class="tag">Eq 8.23</span>
+      <span class="eq">y = x + ε &nbsp;&nbsp;⟹&nbsp;&nbsp; σ²<sub>Total</sub> = σ²<sub>P</sub> + σ²<sub>Gauge</sub></span>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <h2><span class="num">6</span> The Precision-to-Tolerance (P/T) Ratio <span class="slide-ref">slides 28–29</span></h2>
+    <p>Compares gauge capability to the tolerance band (USL − LSL):</p>
+    <div class="formula">
+      <span class="eq">P/T = <span class="frac"><span>k · σ̂<sub>Gauge</sub></span><span>USL − LSL</span></span></span>
+    </div>
+    <p>Popular constants: <strong>k = 5.15</strong> (95% tolerance interval covering ≥99% of a normal population) or <strong>k = 6</strong> (the usual natural tolerance limits).</p>
+    <div class="box example">
+      <span class="tag">📊 Example</span>
+      <p>σ̂<sub>Gauge</sub> = 0.887, USL = 60, LSL = 5, k = 6: &nbsp; P/T = 6(0.887)/(60 − 5) = 5.32/55 = <strong>0.097</strong>.</p>
+      <p><strong>P/T ≤ 0.1</strong> is usually taken to imply <strong>adequate gauge capability</strong> (use with caution).</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <h2><span class="num">7</span> Variance Components, SNR &amp; Discrimination Ratio <span class="slide-ref">slides 30–33</span></h2>
+    <p>From a gauge study, estimate the total standard deviation, then separate the product and gauge parts:</p>
+    <div class="formula small">
+      <span class="eq">σ̂²<sub>Total</sub> = s² &nbsp;·&nbsp; σ̂²<sub>P</sub> = σ̂²<sub>Total</sub> − σ̂²<sub>Gauge</sub></span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 Example 8.7 (continued)</span>
+      <p>s = √(392.4/39) = 3.17 → σ̂²<sub>Total</sub> = (3.17)² = 10.05; σ̂²<sub>P</sub> = (3.17)² − (0.887)² = 9.26; σ̂<sub>P</sub> = <strong>3.04</strong>.</p>
+    </div>
+    <h3>Ratios of variability <span class="slide-ref">slide 31</span></h3>
+    <div class="formula small">
+      <span class="eq">ρ<sub>P</sub> = <span class="frac"><span>σ²<sub>P</sub></span><span>σ²<sub>Total</sub></span></span> &nbsp;(8.26) &nbsp;·&nbsp; ρ<sub>M</sub> = <span class="frac"><span>σ²<sub>Gauge</sub></span><span>σ²<sub>Total</sub></span></span> &nbsp;(8.27) &nbsp;·&nbsp; ρ<sub>P</sub> = 1 − ρ<sub>M</sub></span>
+    </div>
+    <p>Example: ρ̂<sub>M</sub> = 0.79/10.05 = <strong>0.0786</strong> → the instrument contributes ≈ <strong>7.86%</strong> of total variance, so ρ<sub>P</sub> = 0.9214.</p>
+
+    <h3>Signal-to-Noise Ratio (SNR) <span class="slide-ref">slide 32</span></h3>
+    <div class="formula">
+      <span class="tag">Eq 8.28</span>
+      <span class="eq">SNR = √<span class="sqrt"><span class="frac"><span>2 ρ<sub>P</sub></span><span>1 − ρ<sub>P</sub></span></span></span></span>
+    </div>
+    <p>The number of distinct levels reliably obtained. AIAG: <strong>SNR ≥ 5</strong> recommended; <strong>&lt; 2</strong> inadequate. Example: SNR = √(2·0.9214 / (1 − 0.9214)) = <strong>4.84</strong> → does <em>not</em> meet the SNR ≥ 5 guideline.</p>
+
+    <h3>Discrimination Ratio (DR) <span class="slide-ref">slide 33</span></h3>
+    <div class="formula">
+      <span class="tag">Eq 8.29</span>
+      <span class="eq">DR = <span class="frac"><span>1 + ρ<sub>P</sub></span><span>1 − ρ<sub>P</sub></span></span></span>
+    </div>
+    <p>For a capable gauge, <strong>DR &gt; 4</strong>. Example: DR = (1 + 0.9214)/(1 − 0.9214) = <strong>24.45</strong> → the gauge is capable by this measure.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <h2><span class="num">8</span> Accuracy, Precision &amp; Gauge R&amp;R <span class="slide-ref">slides 34–35</span></h2>
+    <div class="box def">
+      <span class="tag">Accuracy vs. Precision</span>
+      <p><strong>Accuracy</strong> — the ability of the instrument to measure the true value correctly <em>on average</em> (evaluated using a known standard; fixed by calibration). <strong>Precision</strong> — the inherent variability in the measurement system.</p>
+    </div>
+    <p>The gauge variance itself splits into two components — the basis of a <strong>gauge R &amp; R study</strong>:</p>
+    <div class="formula">
+      <span class="eq">σ²<sub>Gauge</sub> = σ²<sub>Repeatability</sub> + σ²<sub>Reproducibility</sub></span>
+    </div>
+    <p><strong>Repeatability</strong> = inherent precision of the gauge itself; <strong>Reproducibility</strong> = variability due to different operators / conditions.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9">
+    <h2><span class="num">📋</span> Formula Cheat Sheet</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Quantity</th><th>Formula</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Natural tolerance limits</td><td class="en">UNTL/LNTL = μ ± 3σ</td><td>99.73% inside · 2700 ppm out</td></tr>
+          <tr><td>Process capability ratio</td><td class="en">Cp = (USL − LSL) / (6σ̂)</td><td>two-sided, potential</td></tr>
+          <tr><td>% of spec band used</td><td class="en">P = (1/Cp) × 100</td><td></td></tr>
+          <tr><td>One-sided PCR</td><td class="en">Cpu = (USL − μ)/3σ ; Cpl = (μ − LSL)/3σ</td><td></td></tr>
+          <tr><td>Actual capability</td><td class="en">Cpk = min(Cpu, Cpl)</td><td>Cpk=Cp → centered</td></tr>
+          <tr><td>Estimate σ from range</td><td class="en">σ̂ = R̄ / d₂</td><td>variables charts</td></tr>
+          <tr><td>MSA model</td><td class="en">y = x + ε ; σ²Total = σ²P + σ²Gauge</td><td></td></tr>
+          <tr><td>Precision-to-tolerance</td><td class="en">P/T = k·σ̂Gauge /(USL − LSL)</td><td>k=5.15 or 6 · P/T ≤ 0.1 good</td></tr>
+          <tr><td>Variability ratios</td><td class="en">ρP = σ²P/σ²Total ; ρM = σ²Gauge/σ²Total</td><td>ρP = 1 − ρM</td></tr>
+          <tr><td>Signal-to-noise ratio</td><td class="en">SNR = √(2ρP /(1 − ρP))</td><td>≥5 good, &lt;2 bad</td></tr>
+          <tr><td>Discrimination ratio</td><td class="en">DR = (1 + ρP)/(1 − ρP)</td><td>&gt; 4 capable</td></tr>
+          <tr><td>Gauge R&amp;R</td><td class="en">σ²Gauge = σ²Repeatability + σ²Reproducibility</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <h2><span class="num">★</span> Quick Review</h2>
+    <ul>
+      <li><strong>Capability</strong> = process uniformity; measured by the <strong>Six-Sigma spread</strong>; natural limits μ ± 3σ (2700 ppm out).</li>
+      <li><strong>Cp</strong> = (USL−LSL)/6σ̂ → <em>potential</em> capability (ignores centering); <strong>Cpk = min(Cpu, Cpl)</strong> → <em>actual</em> capability. Cpk &lt; Cp ⟹ off center.</li>
+      <li>The <strong>control chart</strong> is the primary technique of capability analysis; estimate σ̂ = R̄/d₂.</li>
+      <li><strong>MSA:</strong> σ²Total = σ²P + σ²Gauge; gauge splits into <strong>repeatability + reproducibility</strong> (gauge R&amp;R).</li>
+      <li>Gauge adequacy: <strong>P/T ≤ 0.1</strong>, <strong>SNR ≥ 5</strong>, <strong>DR &gt; 4</strong>.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  Chapter 8 — Statistical Quality Control, 7th Edition by Douglas C. Montgomery (© John Wiley &amp; Sons, Inc.) · Summary of slides 3–4, 10–12, 15–16, 19–25, 28–35.
+</footer>
+</body>
+</html>

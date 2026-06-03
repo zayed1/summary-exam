@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 15 — Lot-by-Lot Acceptance Sampling (Summary)</title>
+<meta name="description" content="Summary of Chapter 15: acceptance sampling for attributes — sampling plans, OC curve, AQL/LTPD/AOQL, single-sampling plan design, rectifying inspection (AOQ, ATI), double/multiple/sequential sampling, and MIL STD 105E. Slides 3–9, 12–26, 28–29, 39–54.">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body dir="ltr">
+<div class="topbar">
+  <a class="brand" href="index.html">📚 SQC Summaries</a>
+  <span class="actions no-print">
+    <a class="btn" href="index.html">⌂ Home</a>
+    <a class="btn" href="chapter15.pdf">⬇️ PDF</a>
+    <button class="btn btn-solid" onclick="window.print()">🖨️ Print</button>
+  </span>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">1405-433 · Statistical Quality Control · Chapter 15</p>
+    <h1>Lot-by-Lot Acceptance Sampling for Attributes</h1>
+    <p class="sub">Sampling plans · the OC curve · AQL / LTPD / AOQL · rectifying inspection · MIL STD 105E</p>
+    <div class="chips">
+      <span class="chip">Slides covered: <b>3–9, 12–13, 14–26, 28–29, 39–54</b></span>
+      <span class="chip">Summary + all formulas &amp; examples</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">The Acceptance-Sampling Problem</a></li>
+      <li><a href="#s2">Types of Sampling Plans</a></li>
+      <li><a href="#s3">Lot Formation &amp; Random Sampling</a></li>
+      <li><a href="#s4">Key Quality Levels: AQL, LTPD, AOQL</a></li>
+      <li><a href="#s5">The OC Curve &amp; Risks</a></li>
+      <li><a href="#s6">Designing a Single-Sampling Plan</a></li>
+      <li><a href="#s7">Rectifying Inspection: AOQ, AOQL, ATI</a></li>
+      <li><a href="#s8">Double, Multiple &amp; Sequential Sampling</a></li>
+      <li><a href="#s9">MIL STD 105E</a></li>
+      <li><a href="#s10">📋 Formula Cheat Sheet</a></li>
+      <li><a href="#s11">Quick Review</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="s1">
+    <h2><span class="num">1</span> The Acceptance-Sampling Problem <span class="slide-ref">slides 3–5</span></h2>
+    <p>The typical use of acceptance sampling is <strong>lot sentencing</strong> (accept or reject the lot) for receiving inspection. Three aspects are important:</p>
+    <ul>
+      <li>Its purpose is to <strong>sentence lots, not to estimate lot quality</strong>.</li>
+      <li>It does <strong>not control or improve quality</strong> — it only accepts/rejects lots.</li>
+      <li>It is an <strong>audit tool</strong> to ensure output conforms to requirements.</li>
+    </ul>
+    <div class="box def">
+      <span class="tag">Three approaches to lot sentencing</span>
+      <p>① Accept with <strong>no inspection</strong> · ② <strong>100% inspection</strong> · ③ <strong>acceptance sampling</strong>.</p>
+    </div>
+    <p><strong>Acceptance sampling is most useful when:</strong> testing is destructive; the cost of 100% inspection is very high; 100% inspection isn't technologically feasible; many items + high inspection-error rate; the supplier's history is excellent but process capability is low; or there are serious product-liability risks.</p>
+    <div class="box tip">
+      <span class="tag">💡 Advantages vs. disadvantages</span>
+      <p><strong>Advantages:</strong> less expensive, less handling/damage, applicable to destructive testing, fewer personnel, less inspection error, stronger supplier motivation.<br>
+      <strong>Disadvantages:</strong> risk of accepting bad / rejecting good lots; less information generated; requires planning &amp; documentation.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <h2><span class="num">2</span> Types of Sampling Plans <span class="slide-ref">slide 6</span></h2>
+    <p>Plans are classified by <strong>data type</strong> (variables / attributes) and by the <strong>number of samples</strong> needed for a decision:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Plan</th><th>Decision</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Single-sampling</strong></td><td>Accept or reject from one sample.</td></tr>
+          <tr><td><strong>Double-sampling</strong></td><td>Accept, reject, or take a second sample to decide.</td></tr>
+          <tr><td><strong>Multiple-sampling</strong></td><td>Accept, reject, or take several more samples.</td></tr>
+          <tr><td><strong>Sequential-sampling</strong></td><td>Take units one at a time until accept/reject.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>All four can be designed to give <strong>equivalent results</strong>. Selection factors: administrative efficiency, type of information produced, average amount of inspection, and impact on manufacturing flow.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <h2><span class="num">3</span> Lot Formation &amp; Random Sampling <span class="slide-ref">slide 7</span></h2>
+    <ul>
+      <li>Lots should be <strong>homogeneous</strong>.</li>
+      <li><strong>Larger lots</strong> are preferred over smaller ones.</li>
+      <li>Lots should suit the <strong>materials-handling systems</strong> of supplier and consumer.</li>
+    </ul>
+    <p>Units must be selected <strong>at random</strong> and be representative of the lot — the random-sampling concept is extremely important. Sometimes the inspector <strong>stratifies</strong> the lot (divides it into layers/cubes and samples from each) to ensure units come from all locations.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <h2><span class="num">4</span> Key Quality Levels: AQL, LTPD, AOQL <span class="slide-ref">slides 8–9, 14</span></h2>
+    <div class="box def">
+      <span class="tag">Definitions</span>
+      <p><strong>AQL — Acceptable Quality Level:</strong> a “good” quality level considered satisfactory; the poorest process average a consumer would accept. It is a property of the <strong>supplier’s process</strong>, not the plan.<br>
+      <strong>LTPD — Lot Tolerance Percent Defective:</strong> a poor-quality level the consumer wants protection against (also called RQL / LQL). Specified by the <strong>consumer</strong>.<br>
+      <strong>AOQL — Average Outgoing Quality Limit:</strong> the maximum average defect level after inspection.</p>
+    </div>
+    <div class="box note">
+      <span class="tag">Terminology hierarchy</span>
+      <p><strong>Plan</strong> = sample size + accept/reject criteria · <strong>Scheme</strong> = a set of plans (with rules linking lot/sample sizes &amp; 100% inspection) · <strong>System</strong> = a unified collection of schemes.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <h2><span class="num">5</span> The OC Curve &amp; Risks <span class="slide-ref">slides 12–15</span></h2>
+    <p>The <strong>operating-characteristic (OC) curve</strong> plots the probability of acceptance <span class="en">P<sub>a</sub></span> against the lot fraction defective <span class="en">p</span> — it shows the plan's <strong>discriminatory power</strong>. For a single-sampling plan (binomial):</p>
+    <div class="formula">
+      <span class="tag">Eq 15.2</span>
+      <span class="eq">P<sub>a</sub> = P{d ≤ c} = <span style="font-size:1.3em">Σ</span><sub>d=0</sub><sup>c</sup> <span class="frac"><span>n!</span><span>d!(n − d)!</span></span> p<sup>d</sup> (1 − p)<sup>n−d</sup></span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 Example — n = 89, c = 2</span>
+      <p>At p = 0.01: P<sub>a</sub> = P{d ≤ 2} = <strong>0.9397</strong>. At p = 0.02 (2% defective): P<sub>a</sub> ≈ <strong>0.74</strong> — i.e. of 100 such lots we accept ≈ 74 and reject ≈ 26.</p>
+    </div>
+    <div class="box important">
+      <span class="tag">⚠ The two risks</span>
+      <p><strong>Type I error (α) = P(reject a good lot)</strong> — the producer's risk.<br>
+      <strong>Type II error (β) = P(accept a bad lot)</strong> — the consumer's risk.</p>
+    </div>
+    <p>Effect of n and c: increasing <strong>n</strong> makes the OC curve steeper (more discriminating); changing <strong>c</strong> shifts the curve.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <h2><span class="num">6</span> Designing a Single-Sampling Plan <span class="slide-ref">slides 16–19</span></h2>
+    <p>A plan with a specified OC curve can be found with a <strong>Binomial Nomograph</strong> (Fig 15.9). Specify two points:</p>
+    <ul>
+      <li><strong>p₁ = AQL</strong>, with 1 − α = P[accept | p = AQL]</li>
+      <li><strong>p₂ = LTPD</strong>, with β = P[accept | p = LTPD]</li>
+    </ul>
+    <p>Draw line 1 from p₁ to (1 − α) and line 2 from p₂ to β; read <strong>n</strong> and <strong>c</strong> at the intersection.</p>
+    <div class="box example">
+      <span class="tag">📊 Example</span>
+      <p>p₁ = 0.01, α = 0.05, p₂ = 0.06, β = 0.10 → <strong>n = 120, c = 3</strong>.<br>
+      “Take a sample of 120; accept the lot if defectives ≤ 3, otherwise reject the entire lot.”</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <h2><span class="num">7</span> Rectifying Inspection: AOQ, AOQL, ATI <span class="slide-ref">slides 20–26</span></h2>
+    <p>A <strong>rectifying inspection</strong> program “corrects” lot quality: rejected lots are sent to <strong>100% inspection (screening)</strong> to remove all defectives. Used to know the average quality reaching the next stage (receiving, in-process, final inspection).</p>
+
+    <h3>Average Outgoing Quality (AOQ)</h3>
+    <p>The average quality leaving after rectifying inspection (assuming rejected lots are 100% screened &amp; defectives replaced with good units):</p>
+    <div class="formula">
+      <span class="tag">Eq 15.4</span>
+      <span class="eq">AOQ = <span class="frac"><span>P<sub>a</sub> · p · (N − n)</span><span>N</span></span> &nbsp;≈&nbsp; P<sub>a</sub> · p &nbsp;(when N ≫ n)</span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 Example — N = 10,000, n = 89, c = 2, p = 0.01</span>
+      <p>P<sub>a</sub> = 0.9397 → AOQ = (0.9397)(0.01)(10,000 − 89)/10,000 = <strong>0.0093</strong> (0.93% defective).</p>
+    </div>
+    <div class="box def">
+      <span class="tag">AOQL</span>
+      <p>The <strong>Average Outgoing Quality Limit</strong> is the <strong>maximum point on the AOQ curve</strong> — the worst possible average quality from the program (e.g. AOQL ≈ 0.0155).</p>
+    </div>
+
+    <h3>Average Total Inspection (ATI)</h3>
+    <p>Average number of units inspected per lot (varies between n and N):</p>
+    <div class="formula">
+      <span class="tag">Eq 15.6</span>
+      <span class="eq">ATI = n + (1 − P<sub>a</sub>)(N − n)</span>
+    </div>
+    <div class="box example">
+      <span class="tag">📊 Example</span>
+      <p>N = 10,000, n = 89, c = 2, p = 0.01, P<sub>a</sub> = 0.9397 → ATI = 89 + (1 − 0.9397)(10,000 − 89) = <strong>687</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <h2><span class="num">8</span> Double, Multiple &amp; Sequential Sampling <span class="slide-ref">slides 28–29</span></h2>
+    <p>The advantage of a <strong>double-sampling</strong> plan over single sampling is that it may <strong>reduce the total amount of inspection</strong>. If the first (smaller) sample already gives a clear accept/reject, inspection cost is lower; a lot can also be rejected without completing the second sample.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9">
+    <h2><span class="num">9</span> MIL STD 105E <span class="slide-ref">slides 39–54</span></h2>
+    <p><strong>MIL STD 105E</strong> is the most widely used attributes acceptance-sampling system (civilian equivalents: <strong>ANSI/ASQC Z1.4</strong>, <strong>ISO 2859</strong>). It provides <strong>single, double and multiple</strong> sampling, and is <strong>AQL-oriented</strong> (different AQLs for critical, major, minor defects).</p>
+    <div class="box def">
+      <span class="tag">Three inspection severities</span>
+      <p><strong>Normal</strong> — used at the start. <strong>Tightened</strong> — when the supplier's recent quality has deteriorated (stricter acceptance). <strong>Reduced</strong> — when quality has been exceptionally good (smaller samples). Movement between them follows the <strong>switching rules</strong> (Fig 15.17).</p>
+    </div>
+    <div class="box note">
+      <span class="tag">Inspection levels</span>
+      <p>Sample size depends on <strong>lot size</strong> + <strong>inspection level</strong>. General levels: <strong>I</strong> (≈½ of II), <strong>II = normal (most used)</strong>, <strong>III</strong> (≈2× II). Plus four special levels <strong>S-1…S-4</strong> (very small samples).</p>
+    </div>
+    <h3>Procedure <span class="slide-ref">slide 43</span></h3>
+    <ol class="steps">
+      <li>Choose the AQL.</li>
+      <li>Choose the inspection level.</li>
+      <li>Determine the lot size.</li>
+      <li>Find the sample-size <strong>code letter</strong> (Table 15.4).</li>
+      <li>Choose the plan type (single / double / multiple).</li>
+      <li>Enter the appropriate master table to read the plan.</li>
+      <li>Determine the matching normal &amp; reduced plans as required.</li>
+    </ol>
+    <div class="box example">
+      <span class="tag">📊 Example &amp; Problem 15.22</span>
+      <p><strong>Example:</strong> N = 2,000, AQL = 0.65%, normal, level II → code letter <strong>K</strong> → single plan <strong>n = 125, Ac (c) = 2, Re (r) = 3</strong>.</p>
+      <p><strong>Problem 15.22:</strong> N = 10,000, AQL = 0.10%, level II → code letter <strong>L</strong> → <strong>n = 125, Ac = 0, Re = 1</strong>.</p>
+    </div>
+    <div class="box important">
+      <span class="tag">⚠ Discussion (15.4.3)</span>
+      <p>MIL STD 105E is <strong>AQL-oriented</strong>; not all sample sizes occur (2, 3, 5, 8, 13, 20, 32, 50, …); sample sizes are tied to lot sizes; the most common abuse is <strong>failing to use the switching rules</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <h2><span class="num">📋</span> Formula Cheat Sheet</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Quantity</th><th>Formula</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Prob. of acceptance (OC)</td><td class="en">Pa = Σ₍d=0₎ᶜ [n!/(d!(n−d)!)] pᵈ(1−p)ⁿ⁻ᵈ</td><td>binomial, Eq 15.2</td></tr>
+          <tr><td>Average outgoing quality</td><td class="en">AOQ = Pa·p·(N−n)/N ≈ Pa·p</td><td>Eq 15.4</td></tr>
+          <tr><td>AOQL</td><td class="en">max of the AOQ curve</td><td>worst average outgoing</td></tr>
+          <tr><td>Average total inspection</td><td class="en">ATI = n + (1−Pa)(N−n)</td><td>Eq 15.6</td></tr>
+          <tr><td>Producer's risk</td><td class="en">α = P(reject good lot)</td><td>at AQL</td></tr>
+          <tr><td>Consumer's risk</td><td class="en">β = P(accept bad lot)</td><td>at LTPD</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11">
+    <h2><span class="num">★</span> Quick Review</h2>
+    <ul>
+      <li>Acceptance sampling <strong>sentences lots</strong> (accept/reject) — it does not estimate or improve quality.</li>
+      <li>Plans: <strong>single · double · multiple · sequential</strong>; by attributes or variables.</li>
+      <li><strong>AQL</strong> (good, supplier's process) vs <strong>LTPD</strong> (poor, consumer protection); <strong>AOQL</strong> = max average outgoing defects.</li>
+      <li><strong>OC curve:</strong> Pa vs p; <strong>α = reject good</strong>, <strong>β = accept bad</strong>; larger n ⟹ steeper (more discriminating).</li>
+      <li>Design single plan with the <strong>binomial nomograph</strong> from (AQL, 1−α) and (LTPD, β).</li>
+      <li><strong>Rectifying:</strong> AOQ = Pa·p·(N−n)/N; <strong>ATI = n + (1−Pa)(N−n)</strong>.</li>
+      <li><strong>MIL STD 105E:</strong> AQL-oriented; normal/tightened/reduced + switching rules; levels I/II/III; code letters → master tables.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  Chapter 15 — Statistical Quality Control, 7th Edition by Douglas C. Montgomery (© John Wiley &amp; Sons, Inc.) · Summary of slides 3–9, 12–13, 14–26, 28–29, 39–54.
+</footer>
+</body>
+</html>
