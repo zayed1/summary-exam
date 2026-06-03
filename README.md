@@ -20,6 +20,7 @@
 | **Chapter 5** — Methods & Philosophy of SPC | 3–10، 21–25، 35–45 | [chapter5.html](docs/chapter5.html) | [chapter5.pdf](docs/chapter5.pdf) |
 | **Chapter 7** — Control Charts for Attributes (English) | 7–14، 27–29، 31–37، 40–47، 52–67 | [chapter7.html](docs/chapter7.html) | [chapter7.pdf](docs/chapter7.pdf) |
 | **Chapter 8** — Process & Measurement Capability (English) | 3–4، 10–12، 15–16، 19–25، 28–35 | [chapter8.html](docs/chapter8.html) | [chapter8.pdf](docs/chapter8.pdf) |
+| **Chapter 15** — Acceptance Sampling (English) | 3–9، 12–13، 14–26، 28–29، 39–54 | [chapter15.html](docs/chapter15.html) | [chapter15.pdf](docs/chapter15.pdf) |
 
 ## 📁 بنية المستودع
 
@@ -53,6 +54,5 @@
 
 ---
 
-### 📌 الحالة والفصول الأخرى
-- **Chapter 1, 5, 7, 8:** مكتملة بالإنجليزية بمصطلحات الكتاب.
-- **Chapter 15:** الملف موجود في `source-files/` والشرائح محدّدة (3–9، 12–13، 14–26، 28–29، 39–54) — جاهز للتلخيص عند الطلب.
+### 📌 الحالة
+جميع الفصول المطلوبة (**1، 5، 7، 8، 15**) مكتملة بالإنجليزية بمصطلحات الكتاب ✅
