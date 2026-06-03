@@ -1,0 +1,221 @@
+/* ===========================================================
+   ملخصات مادة ضبط الجودة الإحصائي — الثيم المشترك
+   Statistical Quality Control — study summaries theme
+   =========================================================== */
+:root{
+  --bg:#eef2f6; --surface:#ffffff; --surface-2:#f8fafc;
+  --ink:#15233b; --muted:#5b6b82; --line:#e2e8f0;
+  --primary:#0f766e; --primary-d:#0b5d56; --primary-soft:#d9f2ee;
+  --accent:#b45309; --accent-soft:#fdf1e0;
+  --rose:#be123c; --rose-soft:#fde4ea;
+  --blue:#1d4ed8; --blue-soft:#e3ecfe;
+  --green:#15803d; --green-soft:#e3f5e8;
+  --violet:#6d28d9; --violet-soft:#efe7fd;
+  --radius:16px; --shadow:0 6px 22px rgba(15,35,59,.08);
+  --mono:'DejaVu Sans Mono',ui-monospace,Menlo,Consolas,monospace;
+  --formula:'DejaVu Sans','Segoe UI',Tahoma,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Tajawal','Segoe UI',Tahoma,Arial,sans-serif;
+  font-size:17px; line-height:1.85; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:920px; margin:0 auto; padding:0 18px}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  background:rgba(15,118,110,.96); color:#fff; backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:11px 18px; box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+.topbar .brand{font-weight:700; font-size:1.02rem; display:flex; align-items:center; gap:8px}
+.topbar a{color:#fff; text-decoration:none}
+.topbar .actions{display:flex; gap:8px; flex-wrap:wrap}
+.btn{
+  display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+  background:rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.32);
+  padding:6px 13px; border-radius:999px; font-size:.86rem; font-family:inherit;
+  text-decoration:none; transition:.15s;
+}
+.btn:hover{background:rgba(255,255,255,.28)}
+.btn-solid{background:#fff; color:var(--primary-d); border-color:#fff; font-weight:700}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-d) 100%);
+  color:#fff; border-radius:0 0 26px 26px; padding:30px 0 34px; margin-bottom:26px;
+  box-shadow:var(--shadow);
+}
+.hero .eyebrow{opacity:.9; font-size:.9rem; letter-spacing:.02em; margin:0 0 6px}
+.hero h1{margin:0 0 6px; font-size:2rem; line-height:1.35; font-weight:800}
+.hero .sub{opacity:.95; margin:.2rem 0 14px; font-size:1.02rem}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+.chip{
+  background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.28);
+  padding:5px 12px; border-radius:999px; font-size:.84rem;
+}
+.chip b{font-weight:700}
+
+/* ---------- TOC ---------- */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:16px 20px; margin-bottom:26px; box-shadow:var(--shadow);
+}
+.toc h2{margin:.1rem 0 .6rem; font-size:1.05rem; color:var(--primary-d)}
+.toc ol{margin:0; padding-inline-start:1.3rem}
+.toc li{margin:.25rem 0}
+.toc a{color:var(--ink); text-decoration:none; border-bottom:1px dashed var(--line)}
+.toc a:hover{color:var(--primary); border-color:var(--primary)}
+
+/* ---------- Sections ---------- */
+section{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px 24px; margin-bottom:22px; box-shadow:var(--shadow);
+}
+section>h2{
+  margin:0 0 14px; font-size:1.42rem; color:var(--primary-d); font-weight:800;
+  display:flex; align-items:center; gap:10px; padding-bottom:10px;
+  border-bottom:3px solid var(--primary-soft);
+}
+section>h2 .num{
+  background:var(--primary); color:#fff; width:38px; height:38px; flex:0 0 38px;
+  border-radius:11px; display:grid; place-items:center; font-size:1rem; font-weight:700;
+}
+h3{font-size:1.12rem; color:var(--ink); margin:1.3rem 0 .5rem; font-weight:700}
+p{margin:.55rem 0}
+ul,ol{margin:.5rem 0; padding-inline-start:1.5rem}
+li{margin:.3rem 0}
+strong{color:var(--primary-d)}
+
+/* ---------- English / Latin inline ---------- */
+.en{direction:ltr; unicode-bidi:isolate; font-family:'Segoe UI',Arial,sans-serif}
+.term{
+  direction:ltr; unicode-bidi:isolate; display:inline-block;
+  background:var(--primary-soft); color:var(--primary-d); font-weight:700;
+  padding:0 7px; border-radius:6px; font-size:.92em; font-family:'Segoe UI',Arial,sans-serif;
+}
+
+/* ---------- Callout boxes ---------- */
+.box{border-radius:12px; padding:14px 16px 14px 16px; margin:14px 0;
+     border:1px solid var(--line); position:relative}
+.box .tag{display:inline-flex; align-items:center; gap:6px; font-weight:700;
+          font-size:.86rem; padding:2px 10px; border-radius:999px; margin-bottom:6px}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
+
+.def{background:var(--surface-2); border-inline-start:5px solid var(--primary)}
+.def .tag{background:var(--primary-soft); color:var(--primary-d)}
+.important{background:var(--rose-soft); border-inline-start:5px solid var(--rose)}
+.important .tag{background:#fff; color:var(--rose)}
+.note{background:var(--blue-soft); border-inline-start:5px solid var(--blue)}
+.note .tag{background:#fff; color:var(--blue)}
+.example{background:var(--green-soft); border-inline-start:5px solid var(--green)}
+.example .tag{background:#fff; color:var(--green)}
+.tip{background:var(--violet-soft); border-inline-start:5px solid var(--violet)}
+.tip .tag{background:#fff; color:var(--violet)}
+
+/* ---------- Formula boxes ---------- */
+.formula{
+  background:var(--accent-soft); border:1px solid #f1d4a6;
+  border-inline-start:5px solid var(--accent); border-radius:12px;
+  padding:14px 18px; margin:16px 0; display:flex; align-items:center;
+  justify-content:center; gap:14px; flex-wrap:wrap; position:relative;
+}
+.formula .tag{position:absolute; inset-block-start:8px; inset-inline-start:12px;
+  background:#fff; color:var(--accent); font-weight:700; font-size:.78rem;
+  padding:1px 9px; border-radius:999px}
+.formula .eq{
+  direction:ltr; unicode-bidi:isolate; font-family:var(--formula);
+  font-size:1.5rem; color:#3b2a12; padding:8px 4px; text-align:center;
+}
+.formula .eqno{color:var(--muted); font-size:.85rem; direction:ltr}
+.formula.small .eq{font-size:1.22rem}
+
+/* fraction + math helpers */
+.frac{display:inline-flex; flex-direction:column; vertical-align:middle;
+      text-align:center; margin:0 .15em}
+.frac>span:first-child{border-bottom:1.6px solid currentColor; padding:0 .4em}
+.frac>span:last-child{padding:0 .4em}
+.over{text-decoration:overline}
+.sqrt{border-top:1.6px solid currentColor; padding:0 .2em; margin-inline-start:.1em}
+
+/* ---------- Tables ---------- */
+.tablewrap{overflow-x:auto; margin:14px 0; border-radius:12px; border:1px solid var(--line)}
+table{border-collapse:collapse; width:100%; font-size:.96rem; background:#fff}
+th,td{padding:9px 12px; text-align:start; border-bottom:1px solid var(--line)}
+thead th{background:var(--primary); color:#fff; font-weight:700}
+tbody tr:nth-child(even){background:var(--surface-2)}
+td .term,th .term{font-size:.86em}
+
+/* numbered framework list */
+.steps{counter-reset:step; list-style:none; padding:0; margin:12px 0}
+.steps>li{position:relative; padding-inline-start:44px; margin:.6rem 0}
+.steps>li::before{
+  counter-increment:step; content:counter(step);
+  position:absolute; inset-inline-start:0; top:0;
+  width:30px; height:30px; background:var(--primary-soft); color:var(--primary-d);
+  border-radius:9px; display:grid; place-items:center; font-weight:700; font-size:.9rem;
+}
+
+/* slide reference badge */
+.slide-ref{
+  display:inline-block; background:#eef2f6; color:var(--muted);
+  border:1px solid var(--line); border-radius:999px; padding:1px 9px;
+  font-size:.74rem; font-weight:700; margin-inline-start:8px; vertical-align:middle;
+  direction:rtl;
+}
+
+/* key-points grid */
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:14px 0}
+.kpi{background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:12px 14px; text-align:center}
+.kpi .v{font-size:1.5rem; font-weight:800; color:var(--primary-d); direction:ltr; font-family:var(--formula)}
+.kpi .l{font-size:.82rem; color:var(--muted); margin-top:2px}
+
+/* ---------- Footer ---------- */
+footer{color:var(--muted); font-size:.85rem; text-align:center; padding:24px 12px 40px}
+footer a{color:var(--primary)}
+
+/* ---------- Index landing cards ---------- */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin:8px 0 26px}
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;
+  transition:.18s; text-decoration:none; color:var(--ink);
+}
+.card:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(15,35,59,.14); border-color:var(--primary)}
+.card .ico{width:52px; height:52px; border-radius:14px; background:var(--primary-soft);
+  color:var(--primary-d); display:grid; place-items:center; font-size:1.5rem; font-weight:800}
+.card h3{margin:0; color:var(--primary-d); font-size:1.25rem}
+.card .meta{color:var(--muted); font-size:.9rem; margin:0}
+.card .go{margin-top:auto; color:var(--primary); font-weight:700; font-size:.92rem}
+.dl-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+.dl{font-size:.8rem; padding:4px 11px; border-radius:999px; border:1px solid var(--line);
+    background:var(--surface-2); color:var(--muted); text-decoration:none}
+.dl:hover{border-color:var(--primary); color:var(--primary)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:600px){
+  body{font-size:16px}
+  .hero h1{font-size:1.55rem}
+  section{padding:18px 15px}
+  section>h2{font-size:1.2rem}
+  .formula .eq{font-size:1.25rem}
+}
+
+/* ---------- Print / PDF ---------- */
+@page{size:A4; margin:14mm 13mm}
+@media print{
+  body{background:#fff; font-size:12.5pt; line-height:1.7}
+  .topbar,.no-print{display:none !important}
+  .wrap{max-width:none; padding:0}
+  .hero{border-radius:0; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+        margin-bottom:14px; padding:18px 16px}
+  section{box-shadow:none; border:1px solid #d9e0ea; break-inside:avoid; page-break-inside:avoid; margin-bottom:14px}
+  .box,.formula,.tablewrap,.kpi{break-inside:avoid; page-break-inside:avoid}
+  h2,h3{break-after:avoid}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .toc{break-after:avoid}
+  a{color:inherit; text-decoration:none}
+}

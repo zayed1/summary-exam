@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 5 — ملخص ضبط الجودة الإحصائي</title>
+<meta name="description" content="ملخص Chapter 5: الأدوات السبع لـ SPC، أسباب التباين، أساس خريطة التحكّم، اختيار حدود التحكّم، ARL و ATS، المجموعات الرشيدة، مع القوانين. الشرائح 3–10، 21–25، 35–45.">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">📚 الملخصات</a>
+  <span class="actions no-print">
+    <a class="btn" href="index.html">⌂ الرئيسية</a>
+    <a class="btn" href="chapter5.pdf">⬇️ PDF</a>
+    <button class="btn btn-solid" onclick="window.print()">🖨️ طباعة</button>
+  </span>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">1405-433 · Statistical Quality Control · Chapter 5</p>
+    <h1>الفصل الخامس: أساليب وفلسفة ضبط العمليات الإحصائي</h1>
+    <p class="sub">Methods and Philosophy of Statistical Process Control (SPC)</p>
+    <div class="chips">
+      <span class="chip">الشرائح المغطّاة: <b>3–10، 21–25، 35–45</b></span>
+      <span class="chip">ملخّص + جميع القوانين والأمثلة</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="toc">
+    <h2>محتويات الملخّص</h2>
+    <ol>
+      <li><a href="#s1">الأدوات السبع لـ SPC «The Magnificent Seven»</a></li>
+      <li><a href="#s2">أسباب التباين: الصدفة مقابل القابلة للعزو</a></li>
+      <li><a href="#s3">الأساس الإحصائي لخريطة التحكّم (CL · UCL · LCL)</a></li>
+      <li><a href="#s4">اختيار حدود التحكّم وأخطاء النوع I و II</a></li>
+      <li><a href="#s5">حجم العيّنة وتكرار المعاينة و ARL</a></li>
+      <li><a href="#s6">متوسط زمن الإشارة ATS وأمثلة الكشف</a></li>
+      <li><a href="#s7">المجموعات الفرعية الرشيدة (Rational Subgroups)</a></li>
+      <li><a href="#s8">📋 ملخّص القوانين (Cheat Sheet)</a></li>
+      <li><a href="#s9">مراجعة سريعة</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ Section 1 ============ -->
+  <section id="s1">
+    <h2><span class="num">1</span> الأدوات السبع لـ SPC <span class="slide-ref">شرائح ٣–١٠</span></h2>
+    <p>لكي يلبّي المنتج توقّعات العميل أو يتجاوزها، يجب أن يُنتَج بعملية <strong>مستقرّة أو قابلة للتكرار <span class="term">stable / repeatable</span></strong>. يمكن تطبيق SPC على أي عملية، وأدواته الرئيسية السبع تُسمّى <strong>«السبعة الرائعة» <span class="term">The Magnificent Seven</span></strong>:</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>الأداة</th><th>وظيفتها باختصار</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><span class="term">Histogram</span> / <span class="term">Stem-and-leaf</span></td><td>عرض شكل توزيع البيانات وتشتّتها.</td></tr>
+          <tr><td>2</td><td><span class="term">Check Sheet</span> ورقة الفحص</td><td>تجميع بيانات العيوب بشكل منظّم عبر الزمن.</td></tr>
+          <tr><td>3</td><td><span class="term">Pareto Chart</span> مخطط باريتو</td><td>ترتيب العيوب تنازلياً لتحديد «القلّة الحيوية».</td></tr>
+          <tr><td>4</td><td><span class="term">Cause-and-Effect</span> السبب والأثر</td><td>تحليل الأسباب الجذرية للمشكلة (مخطط السمكة).</td></tr>
+          <tr><td>5</td><td><span class="term">Defect Concentration</span> تركّز العيوب</td><td>تحديد مواضع العيوب على رسم المنتج.</td></tr>
+          <tr><td>6</td><td><span class="term">Scatter Diagram</span> الانتشار</td><td>دراسة العلاقة بين متغيّرين.</td></tr>
+          <tr><td>7</td><td><span class="term">Control Chart</span> خريطة التحكّم</td><td>مراقبة العملية عبر الزمن وكشف الخروج عن السيطرة.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box important">
+      <span class="tag">⚠️ مهم</span>
+      <p>من بين السبع، تُعدّ <strong>خريطة تحكّم شيوارت <span class="term">Shewhart Control Chart</span></strong> هي الأكثر تطوّراً من الناحية التقنية <span class="en">(most technically sophisticated)</span>.</p>
+    </div>
+
+    <h3>لمحة عن كل أداة (من الأمثلة في الشرائح)</h3>
+    <ul>
+      <li><strong>Check Sheet <span class="slide-ref">شريحة ٤</span>:</strong> جدول يسجّل أنواع العيوب وتكرارها شهرياً (مثال بيانات خزّان طائرات 2002–2003) للحصول على إجماليات لكل نوع عيب.</li>
+      <li><strong>Pareto Chart <span class="slide-ref">شرائح ٥–٦</span>:</strong> أعمدة مرتّبة تنازلياً حسب التكرار (في المثال: الأبعاد غير الصحيحة 36، الأجزاء التالفة 34، التشغيل 29...). يُركّز الجهد على العيوب الأكثر تأثيراً. قد يُضاف خط <strong>النسبة التراكمية</strong> أو يُقسّم حسب المورّد.</li>
+      <li><strong>Cause-and-Effect (Fishbone) <span class="slide-ref">شرائح ٧–٨</span>:</strong> يربط الأثر (مثل «عيوب الخزّان») بفئات الأسباب: <span class="en">Machines, Materials, Methods, Measurement, Personnel, Environment</span>.</li>
+      <li><strong>Defect Concentration <span class="slide-ref">شريحة ٩</span>:</strong> رسم للمنتج من جميع الجهات تُعلَّم عليه مواضع العيوب (رموز عيوب: <span class="en">A=Scratch, B=Nick, C=Scuff, D=Moon</span>).</li>
+      <li><strong>Scatter Diagram <span class="slide-ref">شريحة ١٠</span>:</strong> نقاط (متغيّرين) تُظهر العلاقة؛ في المثال علاقة <strong>طردية</strong> بين «استرجاع المعدن %» و«تدفّق الاسترجاع».</li>
+    </ul>
+
+    <h3>خطوات بناء مخطط السبب والأثر <span class="slide-ref">شريحة ٨</span></h3>
+    <ol class="steps">
+      <li>عرّف المشكلة أو الأثر المُراد تحليله.</li>
+      <li>شكّل الفريق لإجراء التحليل (عبر العصف الذهني غالباً تظهر أسباب محتملة).</li>
+      <li>ارسم صندوق الأثر والخط المركزي.</li>
+      <li>حدّد فئات الأسباب الرئيسية واربطها كصناديق بالخط المركزي.</li>
+      <li>حدّد الأسباب المحتملة وصنّفها ضمن الفئات، وأنشئ فئات جديدة عند الحاجة.</li>
+      <li>رتّب الأسباب لتحديد الأكثر احتمالاً للتأثير في المشكلة.</li>
+      <li>اتّخذ الإجراء التصحيحي.</li>
+    </ol>
+  </section>
+
+  <!-- ============ Section 2 ============ -->
+  <section id="s2">
+    <h2><span class="num">2</span> أسباب التباين: الصدفة مقابل القابلة للعزو <span class="slide-ref">شرائح ٢١–٢٤</span></h2>
+
+    <div class="box def">
+      <span class="tag">Chance Causes — أسباب الصدفة</span>
+      <p>في أي عملية إنتاج يوجد دائماً قدر من <strong>التباين الطبيعي/المتأصّل</strong>. هذا التباين الطبيعي («الضوضاء الخلفية» <span class="term">background noise</span>) هو الأثر التراكمي لكثير من الأسباب الصغيرة <strong>التي لا يمكن تجنّبها أساساً</strong>، ويُسمّى «نظاماً مستقرّاً من أسباب الصدفة».</p>
+    </div>
+    <div class="box important">
+      <span class="tag">✔ في حالة ضبط إحصائي</span>
+      <p>العملية التي تعمل في وجود <strong>أسباب الصدفة فقط</strong> تكون <strong>تحت الضبط الإحصائي <span class="term">in statistical control</span></strong>.</p>
+    </div>
+
+    <div class="box def">
+      <span class="tag">Assignable Causes — أسباب قابلة للعزو</span>
+      <p>قد يظهر أحياناً تباين من نوع آخر، وينشأ عادةً من <strong>ثلاثة مصادر</strong>:</p>
+      <ol>
+        <li>آلات <strong>غير مضبوطة أو غير مُتحكَّم بها</strong> جيداً.</li>
+        <li><strong>أخطاء المُشغّل <span class="term">operator errors</span></strong>.</li>
+        <li><strong>مواد خام معيبة <span class="term">defective raw material</span></strong>.</li>
+      </ol>
+      <p>هذا التباين <strong>كبير</strong> مقارنةً بالضوضاء الخلفية، ويمثّل عادةً مستوى أداء <strong>غير مقبول</strong>.</p>
+    </div>
+    <div class="box important">
+      <span class="tag">✘ خارج الضبط</span>
+      <p>العملية التي تعمل في وجود <strong>أسباب قابلة للعزو</strong> تكون <strong>خارجة عن الضبط <span class="term">out of control</span></strong>.</p>
+    </div>
+
+    <div class="box note">
+      <span class="tag">🎯 هدف SPC</span>
+      <p>الهدف الرئيسي لضبط العمليات الإحصائي هو <strong>الكشف السريع</strong> عن حدوث الأسباب القابلة للعزو (انزياحات العملية). وخريطة التحكّم هي أداة مراقبة <strong>متّصلة <span class="term">on-line</span></strong> تُستخدم لذلك، كما تساعد في تقدير معاملات العملية وتحديد <strong>قدرة العملية <span class="term">process capability</span></strong>. والهدف النهائي هو <strong>التقليل من التباين</strong> قدر الإمكان (وإن تعذّر إلغاؤه تماماً).</p>
+    </div>
+  </section>
+
+  <!-- ============ Section 3 ============ -->
+  <section id="s3">
+    <h2><span class="num">3</span> الأساس الإحصائي لخريطة التحكّم <span class="slide-ref">شريحة ٢٥</span></h2>
+    <p>تحتوي خريطة التحكّم على ثلاثة خطوط:</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v">CL</div><div class="l">الخط المركزي<br>Center Line</div></div>
+      <div class="kpi"><div class="v">UCL</div><div class="l">الحدّ الأعلى للتحكّم<br>Upper Control Limit</div></div>
+      <div class="kpi"><div class="v">LCL</div><div class="l">الحدّ الأدنى للتحكّم<br>Lower Control Limit</div></div>
+    </div>
+    <ul>
+      <li>نقطة تقع <strong>داخل</strong> الحدّين ← العملية <strong>تحت الضبط</strong> ← <strong>لا إجراء مطلوب</strong>.</li>
+      <li>نقطة تقع <strong>خارج</strong> الحدّين ← دليل على أن العملية <strong>خارجة عن الضبط</strong> ← <strong>تحقيق وإجراء تصحيحي</strong> لإيجاد السبب القابل للعزو وإزالته.</li>
+    </ul>
+    <div class="box important">
+      <span class="tag">⚠️ نقطة دقيقة جداً</span>
+      <p>حتى لو وقعت <strong>كل النقاط داخل</strong> الحدّين، فإن سلوكها بنمط <strong>منهجي أو غير عشوائي <span class="term">systematic / nonrandom</span></strong> قد يكون مؤشّراً على أن العملية <strong>خارجة عن الضبط</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ============ Section 4 ============ -->
+  <section id="s4">
+    <h2><span class="num">4</span> اختيار حدود التحكّم وأخطاء النوع I و II <span class="slide-ref">شرائح ٣٥–٣٦</span></h2>
+    <p>تحديد حدود التحكّم من <strong>أهمّ القرارات</strong> في تصميم الخريطة، وهو موازنة بين نوعين من الخطأ:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>التغيير</th><th>خطأ النوع I (إنذار كاذب)</th><th>خطأ النوع II (تفويت خروج حقيقي)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>إبعاد</strong> الحدود عن CL</td><td>ينخفض ▼</td><td>يرتفع ▲</td></tr>
+          <tr><td><strong>تقريب</strong> الحدود من CL</td><td>يرتفع ▲</td><td>ينخفض ▼</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box note">
+      <span class="tag">تعريف الخطأين</span>
+      <p><strong>النوع I <span class="term">Type I</span>:</strong> نقطة تتجاوز الحدود فتُشير إلى خروج عن الضبط <strong>بينما لا يوجد سبب قابل للعزو</strong> (إنذار كاذب، احتماله = α).<br>
+      <strong>النوع II <span class="term">Type II</span>:</strong> نقطة تقع <strong>داخل</strong> الحدود <strong>بينما العملية فعلاً خارجة عن الضبط</strong> (احتماله = β).</p>
+    </div>
+
+    <h3>أنواع الحدود</h3>
+    <ul>
+      <li><strong>حدود ٣-سيجما <span class="term">3-Sigma Limits</span>:</strong> احتمال خطأ النوع I = <strong>0.0027</strong>.</li>
+      <li><strong>حدود احتمالية <span class="term">Probability Limits</span>:</strong> يُختار احتمال النوع I مباشرةً (مثال: 0.001 يعطي حدود <strong>3.09-sigma</strong>).</li>
+      <li><strong>حدود التحذير <span class="term">Warning Limits</span>:</strong> تُختار عادةً عند <strong>٢-سيجما</strong>.</li>
+    </ul>
+
+    <div class="box example">
+      <span class="tag">📊 مثال الأرقام (شريحة ٣٦)</span>
+      <p>بخطّ مركزي <span class="en">CL = 1.5</span> وانحراف <span class="en">σ<sub>x̄</sub> ≈ 0.0671</span>:</p>
+      <div class="tablewrap" style="margin-top:6px">
+        <table>
+          <tbody>
+            <tr><td>UCL (‎+3σ)</td><td class="en" style="direction:ltr">1.7013</td></tr>
+            <tr><td>UWL (‎+2σ) حدّ تحذير أعلى</td><td class="en" style="direction:ltr">1.6342</td></tr>
+            <tr><td>CL الخط المركزي</td><td class="en" style="direction:ltr">1.5000</td></tr>
+            <tr><td>LWL (‎−2σ) حدّ تحذير أدنى</td><td class="en" style="direction:ltr">1.3658</td></tr>
+            <tr><td>LCL (‎−3σ)</td><td class="en" style="direction:ltr">1.2487</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="formula small">
+      <span class="tag">حدود التحكّم (٣-سيجما)</span>
+      <span class="eq">UCL = CL + 3σ &nbsp;·&nbsp; LCL = CL − 3σ &nbsp;·&nbsp; (Warning = CL ± 2σ)</span>
+    </div>
+  </section>
+
+  <!-- ============ Section 5 ============ -->
+  <section id="s5">
+    <h2><span class="num">5</span> حجم العيّنة وتكرار المعاينة و ARL <span class="slide-ref">شرائح ٣٧–٤٠</span></h2>
+    <p>عند تصميم الخريطة يجب تحديد <strong>حجم العيّنة <span class="term">sample size</span></strong> و<strong>تكرار المعاينة <span class="term">sampling frequency</span></strong> معاً:</p>
+    <ul>
+      <li><strong>العيّنات الأكبر</strong> تُسهّل كشف <strong>الانزياحات الصغيرة</strong>.</li>
+      <li>الخيار بين: عيّنات <strong>صغيرة على فترات قصيرة</strong> أو <strong>كبيرة على فترات طويلة</strong>.</li>
+      <li>الممارسة الصناعية الحالية تميل إلى <strong>عيّنات أصغر وأكثر تكراراً</strong>.</li>
+    </ul>
+
+    <h3>طول التشغيل المتوسط — <span class="term">Average Run Length (ARL)</span></h3>
+    <p>الـ ARL هو <strong>متوسط عدد النقاط</strong> التي يجب رسمها <strong>قبل</strong> أن تُشير نقطة إلى حالة خروج عن الضبط. لأي خريطة شيوارت (بمشاهدات غير مترابطة):</p>
+    <div class="formula">
+      <span class="tag">Eq 5.2</span>
+      <span class="eq">ARL = <span class="frac"><span>1</span><span>p</span></span></span>
+      <span class="eqno">(5.2)</span>
+    </div>
+    <p>حيث <span class="en">p</span> = احتمال أن <strong>تتجاوز</strong> أي نقطة حدود التحكّم.</p>
+
+    <div class="box example">
+      <span class="tag">📊 مثال: ARL في حالة الضبط (شرائح ٣٩–٤٠)</span>
+      <p>لخريطة <span class="en">x̄</span> بحدود ٣-سيجما وهي <strong>تحت الضبط</strong>: <span class="en">p = 0.0027</span>، إذن:</p>
+      <div class="formula small" style="background:#fff;border-color:#e2e8f0">
+        <span class="eq">ARL<sub>0</sub> = <span class="frac"><span>1</span><span>p</span></span> = <span class="frac"><span>1</span><span>0.0027</span></span> = 370</span>
+      </div>
+      <p>أي حتى لو بقيت العملية تحت الضبط، يظهر <strong>إنذار كاذب كل ٣٧٠ عيّنة</strong> في المتوسط.</p>
+      <p style="margin-bottom:0">توزيع طول التشغيل <strong>هندسي <span class="term">geometric</span></strong>، وانحرافه المعياري كبير (قريب من المتوسط)، لذا تتغيّر قيمة ARL₀ الفعلية كثيراً:</p>
+      <div class="formula small" style="background:#fff;border-color:#e2e8f0">
+        <span class="eq">σ<sub>RL</sub> = <span class="frac"><span>√(1 − p)</span><span>p</span></span> = <span class="frac"><span>√(1 − 0.0027)</span><span>0.0027</span></span> ≈ 370</span>
+      </div>
+      <p style="margin-bottom:0">المئين العاشر والخمسون للتوزيع هما <strong>38</strong> و<strong>256</strong>: أي ~10% من الوقت يكون طول التشغيل ≤ 38، و50% من الوقت ≤ 256.</p>
+    </div>
+  </section>
+
+  <!-- ============ Section 6 ============ -->
+  <section id="s6">
+    <h2><span class="num">6</span> متوسط زمن الإشارة ATS وأمثلة الكشف <span class="slide-ref">شرائح ٤١–٤٤</span></h2>
+    <p>يمكن التعبير عن أداء الخريطة بـ<strong>متوسط زمن الإشارة <span class="term">Average Time to Signal (ATS)</span></strong>. إذا أُخِذت العيّنات على فترات زمنية متباعدة بـ <span class="en">h</span> ساعة:</p>
+    <div class="formula">
+      <span class="tag">Eq 5.3</span>
+      <span class="eq">ATS = ARL × h</span>
+      <span class="eqno">(5.3)</span>
+    </div>
+    <p>مثال (تحت الضبط، معاينة كل ساعة): إنذار كاذب كل <strong>٣٧٠ ساعة</strong> تقريباً (370 × 1).</p>
+
+    <div class="box important">
+      <span class="tag">⚠️ مفهوم p حسب حالة العملية</span>
+      <p>قيمة <span class="en">p</span> في المعادلة (5.2) تختلف بحسب الحالة:<br>
+      • <strong>تحت الضبط:</strong> <span class="en">p = α = 0.0027</span> (احتمال الإنذار الكاذب) ← تعطي <strong>ARL₀</strong>.<br>
+      • <strong>خارج الضبط:</strong> <span class="en">p = 1 − β</span> (احتمال <strong>كشف</strong> الانزياح) ← تعطي <strong>ARL₁</strong>.</p>
+    </div>
+
+    <div class="box example">
+      <span class="tag">📊 مثال الكشف عن انزياح — n = 5 (شريحة ٤٢)</span>
+      <p>عند انزياح المتوسط إلى <span class="en">1.725 microns</span>، من منحنى الخصائص التشغيلية <span class="term">OC curve</span> (شكل 5.9): احتمال وقوع <span class="en">x̄</span> <strong>بين</strong> الحدّين ≈ <span class="en">0.65</span> (= β)، إذن احتمال الكشف <span class="en">p = 1 − 0.65 = 0.35</span>:</p>
+      <div class="formula small" style="background:#fff;border-color:#e2e8f0">
+        <span class="eq">ARL<sub>1</sub> = <span class="frac"><span>1</span><span>p</span></span> = <span class="frac"><span>1</span><span>0.35</span></span> = 2.86 &nbsp;→&nbsp; ATS = 2.86 × 1 = 2.86 hr</span>
+      </div>
+      <p style="margin-bottom:0">أي تحتاج الخريطة ٢٫٨٦ عيّنة (≈ ٢٫٨٦ ساعة) في المتوسط لكشف الانزياح.</p>
+    </div>
+
+    <div class="box example">
+      <span class="tag">📊 تسريع الكشف (شرائح ٤٣–٤٤)</span>
+      <p><strong>الطريقة (أ) معاينة أكثر تكراراً:</strong> كل نصف ساعة → <span class="en">ATS = 2.86 × ½ = 1.43 hr</span>.</p>
+      <p><strong>الطريقة (ب) زيادة حجم العيّنة:</strong> بـ <span class="en">n = 10</span> يصبح احتمال الوقوع بين الحدّين ≈ 0.1 (β)، إذن <span class="en">p = 0.9</span>:</p>
+      <div class="formula small" style="background:#fff;border-color:#e2e8f0">
+        <span class="eq">ARL<sub>1</sub> = <span class="frac"><span>1</span><span>0.9</span></span> = 1.11 &nbsp;→&nbsp; ATS = 1.11 × 1 = 1.11 hr</span>
+      </div>
+      <p>إذن العيّنة الأكبر تكشف الانزياح <strong>أسرع بنحو الضعف</strong>. تصميمان مكافئان للكشف خلال الساعة الأولى تقريباً:</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th></th><th>Design 1</th><th>Design 2</th></tr></thead>
+          <tbody>
+            <tr><td>حجم العيّنة</td><td class="en">n = 5</td><td class="en">n = 10</td></tr>
+            <tr><td>تكرار المعاينة</td><td>كل نصف ساعة</td><td>كل ساعة</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Section 7 ============ -->
+  <section id="s7">
+    <h2><span class="num">7</span> المجموعات الفرعية الرشيدة <span class="slide-ref">شريحة ٤٥</span></h2>
+    <div class="box def">
+      <span class="tag">Rational Subgroups</span>
+      <p>تُختار المجموعات/العيّنات بحيث — إذا وُجدت أسباب قابلة للعزو — تكون فرصة الاختلاف <strong>بين</strong> المجموعات <strong>أكبر ما يمكن</strong>، بينما تكون فرصة الاختلاف بسبب الأسباب القابلة للعزو <strong>داخل</strong> المجموعة الواحدة <strong>أصغر ما يمكن</strong>.</p>
+    </div>
+    <p>هناك <strong>أسلوبان</strong> لتكوينها:</p>
+    <div class="box example">
+      <span class="tag">① وحدات أُنتِجت في نفس الوقت (متتالية)</span>
+      <p>الغرض الأساسي: <strong>كشف انزياحات العملية</strong> <span class="en">(detect process shifts)</span>. (لقطة زمنية لحظية للعملية.)</p>
+    </div>
+    <div class="box example">
+      <span class="tag">② عيّنة ممثّلة لكل ما أُنتِج منذ العيّنة السابقة</span>
+      <p>عيّنة عشوائية من كل مخرجات العملية خلال الفترة، وتُستخدم غالباً في قرارات <strong>قبول المنتج</strong>، وفعّالة في كشف الانزياح للخارج ثم العودة للداخل بين العيّنات.</p>
+    </div>
+    <div class="box important">
+      <span class="tag">⚠️ تحذير</span>
+      <p>في الأسلوب الثاني يجب الحذر: يمكن أن نجعل أي عملية <strong>تبدو</strong> تحت الضبط الإحصائي فقط عبر <strong>إطالة الفترة</strong> بين المشاهدات داخل العيّنة.</p>
+    </div>
+  </section>
+
+  <!-- ============ Section 8: Cheat Sheet ============ -->
+  <section id="s8">
+    <h2><span class="num">📋</span> ملخّص القوانين — Cheat Sheet</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>القانون</th><th>الصيغة</th><th>ملاحظة</th></tr></thead>
+        <tbody>
+          <tr><td>حدود التحكّم (٣σ)</td><td class="en" style="direction:ltr">UCL = CL + 3σ ، LCL = CL − 3σ</td><td>الأكثر شيوعاً</td></tr>
+          <tr><td>حدود التحذير (٢σ)</td><td class="en" style="direction:ltr">CL ± 2σ</td><td>Warning Limits</td></tr>
+          <tr><td>خطأ النوع I لـ ٣σ</td><td class="en" style="direction:ltr">α = 0.0027</td><td>إنذار كاذب</td></tr>
+          <tr><td>طول التشغيل المتوسط</td><td class="en" style="direction:ltr">ARL = 1 / p</td><td>المعادلة (5.2)</td></tr>
+          <tr><td>ARL تحت الضبط</td><td class="en" style="direction:ltr">ARL₀ = 1 / 0.0027 = 370</td><td>p = α</td></tr>
+          <tr><td>الانحراف المعياري لطول التشغيل</td><td class="en" style="direction:ltr">σ_RL = √(1 − p) / p</td><td>توزيع هندسي</td></tr>
+          <tr><td>متوسط زمن الإشارة</td><td class="en" style="direction:ltr">ATS = ARL × h</td><td>المعادلة (5.3)، h = الفترة</td></tr>
+          <tr><td>ARL خارج الضبط</td><td class="en" style="direction:ltr">ARL₁ = 1 / p ، p = 1 − β</td><td>p = احتمال الكشف</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box tip">
+      <span class="tag">💡 مفتاح p</span>
+      <p>دائماً: <strong>p = احتمال أن تتجاوز نقطةٌ حدودَ التحكّم</strong>. تحت الضبط p = α (صغير ⟸ ARL كبير)، وخارج الضبط p = 1 − β (كبير ⟸ ARL صغير = كشف أسرع).</p>
+    </div>
+  </section>
+
+  <!-- ============ Section 9 ============ -->
+  <section id="s9">
+    <h2><span class="num">★</span> مراجعة سريعة</h2>
+    <ul>
+      <li><strong>السبعة الرائعة:</strong> Histogram · Check sheet · Pareto · Cause-effect · Defect concentration · Scatter · Control chart (الأكثر تطوّراً).</li>
+      <li><strong>أسباب الصدفة</strong> (طبيعية، لا تُتجنّب) ← تحت الضبط · <strong>أسباب قابلة للعزو</strong> (آلات/مُشغّل/مواد) ← خارج الضبط.</li>
+      <li>الخريطة: <strong>CL · UCL · LCL</strong>؛ داخل الحدود = لا إجراء، خارجها = تحقيق. والنمط غير العشوائي داخل الحدود مؤشّر خروج أيضاً.</li>
+      <li><strong>إبعاد الحدود</strong> ↓ النوع I و ↑ النوع II؛ <strong>تقريبها</strong> العكس. (3σ → α = 0.0027).</li>
+      <li><strong>القوانين:</strong> ARL = 1/p · ARL₀ = 370 · ATS = ARL·h · ARL₁ = 1/(1−β).</li>
+      <li><strong>العيّنة الأكبر</strong> تكشف الانزياح أسرع. <strong>المجموعات الرشيدة</strong>: اختلاف بين المجموعات أكبر، وداخلها أصغر.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  Chapter 5 — Statistical Quality Control, 7th Edition by Douglas C. Montgomery (© John Wiley &amp; Sons, Inc.) · ملخّص للشرائح المحددة 3–10، 21–25، 35–45.
+</footer>
+</body>
+</html>
